@@ -1,0 +1,68 @@
+<div class="chat-message-header">
+  {{#if actorImg}}
+  <img class="actor-icon" src="{{actorImg}}" alt="{{alias}}" />
+  {{/if}}
+  <h4 class=chat-actor-name>{{alias}}</h4>
+</div>
+
+<hr>
+
+{{#if actionImg}}
+<div>
+  <img class="chat-icon" src="{{actionImg}}" alt="{{name}}" />
+</div>
+{{/if}}
+
+<div class="flexcol">
+</div>
+
+<div>
+  <ul>
+    <li class="mournblade-roll">Attribut : {{attr.label}}</li>
+
+    {{#if competence}}
+    <li>Compétence : {{competence.name}}</li>
+    {{/if}}
+
+    {{#if rune}}
+    <li>Rune : {{rune.name}}</li>
+    <li>Mode : {{runemode}}</li>
+    <li>Points d'Ame : {{runeame}}</li>
+    <li>Durée : {{runeduree}} actions complexes</li>
+    {{/if}}
+
+    {{#if bonusRoll}}
+    <li>{{textBonus}} : {{bonusRoll.total}}</li>
+    {{/if}}
+
+    {{#if arme}}
+    <li>Arme : {{arme.name}} (+{{arme.system.bonusmaniementoff}})</li>
+    {{/if}}
+
+    <li>Formule : {{diceFormula}}</li>
+    <li>Total : {{finalResult}}</li>
+
+    {{#if difficulte}}
+    {{#if isSuccess}}
+    <li>Succés!!!</li>
+    {{else}}
+    <li>Echec ...</li>
+    {{/if}}
+    {{/if}}
+
+    {{#if isHeroique}}
+    <li>Succés Héroïque!!!</li>
+    {{/if}}
+    {{#if isDramatique}}
+    <li>Echec Dramatique!!!</li>
+    {{/if}}
+
+    {{#each predilections as |pred key|}}
+    <li>
+     <button class="chat-card-button predilection-reroll" data-predilection-index="{{key}}">Predilection : {{pred.name}}</button>
+    </li>
+    {{/each}}
+  </ul>
+</div>
+
+</div>

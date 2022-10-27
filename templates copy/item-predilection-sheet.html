@@ -1,0 +1,23 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="item-sheet-img" src="{{img}}" data-edit="img" title="{{name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+    
+    <div class="flexcol">
+      <span class="flexrow">
+        <label class="generic-label">Compétence : </label>
+        <input type="text" class="padd-right status-small-label color-class-common" name="system.competence" value="{{data.competence}}" data-dtype="String" />
+      </span>
+
+      {{> systems/fvtt-mournblade/templates/partial-item-description.html}}
+
+    </div>
+      
+    </section>
+</form>

@@ -1,0 +1,263 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    <div id="main">
+      <div class="container">
+        {{!-- Sheet Header --}}
+        <header class="header-fields">
+          {{!-- Sheet Tab Navigation --}}
+        <div id="tabs-bar" class="row flex-between   pl-0 pr-0">
+          <div class="tab">
+            <button href="index.html">Caractéristiques</button>
+          </div>
+          <div class="tab flex-">
+            <button href="Combat.html">Combat</button>
+          </div>
+          <div class="tab flex-">
+            <button href="Inventaire.html">Inventaire</button>
+          </div>
+          <div class="tab flex-">
+            <button href="Description.html">Description</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="bloc">
+            <div class="separator">Eclat</div>
+            <input
+              type="number"
+              name="eclat-input"
+              id=""
+              class="rounded-input"
+            />
+          </div>
+
+          <div class="bloc">
+            <div class="separator">Bonne Aventure</div>
+            <div class="bonne-aventure">
+              <span>Actuel</span>
+              <input
+                type="number"
+                id=""
+                class="rounded-input"
+                name="system.bonneaventure.actuelle" value="{{data.bonneaventure.actuelle}}" data-dtype="Number"
+              />
+              <input
+                type="number"
+                name="base-ba-input"
+                id=""
+                class="rounded-input"
+                name="system.bonneaventure.base" value="{{data.bonneaventure.base}}" data-dtype="Number" 
+
+              />
+              <span>Base</span>
+            </div>
+          </div>
+
+          <div class="bloc">
+            <div class="separator">Expérience</div>
+            <input
+              type="number"
+              name="experience-input"
+              id=""
+              class="rounded-input"
+            />
+          </div>
+        </div>
+
+        <div class="second-row">
+          <div class="separator">Attributs</div>
+          <div class="attributs">
+            <div class="attribut">
+              <div class="label">Adresse</div>
+              <div class="input-adresse">
+                <input
+                  type="number"
+                  name="input-adresse"
+                  id=""
+                  class="circle-input"
+                />
+              </div>
+            </div>
+
+            <div class="attribut">
+              <div class="label">Puissance</div>
+              <div class="input-puissance">
+                <input
+                  type="number"
+                  name="input-adresse"
+                  id=""
+                  class="circle-input"
+                />
+              </div>
+            </div>
+
+            <div class="attribut">
+              <div class="label">Clairvoyance</div>
+              <div class="input-clairvoyance">
+                <input
+                  type="number"
+                  name="input-adresse"
+                  id=""
+                  class="circle-input"
+                />
+              </div>
+            </div>
+
+            <div class="attribut">
+              <div class="label">Présence</div>
+              <div class="input-presence">
+                <input
+                  type="number"
+                  name="input-adresse"
+                  id=""
+                  class="circle-input"
+                />
+              </div>
+            </div>
+
+            <div class="attribut">
+              <div class="label">Trempe</div>
+              <div class="input-trempe">
+                <input
+                  type="number"
+                  name="input-adresse"
+                  id=""
+                  class="circle-input"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="third-row">
+            <div class="first-col">
+              <div class="competences">
+                <div class="separator">Compétences</div>
+                <div class="comp-row">
+                  <p class="comp-label">Armes à distance</p>
+                  <div class="input-comp">
+                    <input
+                      type="number"
+                      name="input-armes-distance"
+                      id=""
+                      class="rounded-input armes-distance"
+                    />
+                    <input
+                      type="number"
+                      name="input-adresse"
+                      class="rounded-input adr-before"
+                    />
+                  </div>
+                </div>
+                <div class="comp-row">
+                  <p class="comp-label">Coercition</p>
+                  <div class="input-comp">
+                    <input
+                      type="number"
+                      name="input-coercition"
+                      id=""
+                      class="rounded-input"
+                    />
+
+                    <input
+                      type="number"
+                      name="input-presence"
+                      class="rounded-input"
+                    />
+                  </div>
+                </div>
+                <div class="comp-row">
+                  <p class="comp-label">Commerce</p>
+                  <div class="input-comp">
+                    <input
+                      type="number"
+                      name="input-commerce"
+                      id=""
+                      class="rounded-input"
+                    />
+
+                    <input
+                      type="number"
+                      name="input-presence"
+                      class="rounded-input presence"
+                    />
+                    <input
+                      type="number"
+                      name="input-presence"
+                      class="rounded-input"
+                    />
+                  </div>
+                </div>
+                <div class="comp-row">
+                  <p class="comp-label">Discrétion</p>
+                  <div class="input-comp">
+                    <input
+                      type="number"
+                      name="input-discretion"
+                      id=""
+                      class="rounded-input"
+                    />
+
+                    <input
+                      type="number"
+                      name="input-adresse"
+                      class="rounded-input"
+                    />
+                    <input
+                      type="number"
+                      name="input-trempe"
+                      class="rounded-input"
+                    />
+                  </div>
+                </div>
+                <div class="comp-row">
+                  <p class="comp-label">Filouterie</p>
+                  <div class="input-comp">
+                    <input
+                      type="number"
+                      name="input-filouterie"
+                      id=""
+                      class="rounded-input"
+                    />
+
+                    <input
+                      type="number"
+                      name="input-adresse"
+                      class="rounded-input adresse"
+                    />
+                  </div>
+                </div>
+                <div class="comp-row">
+                  <p class="comp-label">Mêlée</p>
+                  <div class="input-comp">
+                    <input
+                      type="number"
+                      name="input-melee"
+                      id=""
+                      class="rounded-input"
+                    />
+
+                    <input
+                      type="number"
+                      name="input-puissance"
+                      class="rounded-input"
+                    />
+                    <input
+                      type="number"
+                      name="input-presence"
+                      class="rounded-input"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="savoirs"></div>
+            </div>
+            <div class="second-col">
+              <div class="sante"></div>
+              <div class="psyche"></div>
+              <div class="predilection"></div>
+            </div>
+          </div>
+        </div>
+      </header>
+      </div>
+    </div>
+</form>

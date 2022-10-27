@@ -1,0 +1,44 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="item-sheet-img" src="{{img}}" data-edit="img" title="{{name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+      <span class="flexrow">
+        <label class="generic-label">Rune </label>
+        <input type="text" class="padd-right status-small-label color-class-common" name="system.rune" value="{{data.rune}}" data-dtype="String" />
+      </span>
+
+      <span class="flexrow">
+        <label class="generic-label">Mode </label>
+        <select class="status-small-label color-class-common" type="text" name="system.mode"
+        value="{{data.mode}}" data-dtype="string">
+          {{@select data.mode}}
+          <option value="prononcee">Prononcée</option>
+          <option value="inscrite">Inscrite</option>
+          {{/select}}
+        </select>
+      </span>
+
+      <span class="flexrow">
+        <label class="generic-label">Points d'âme </label>
+        <input type="text" class="padd-right status-small-label color-class-common" name="system.pointame" value="{{data.pointame}}" data-dtype="Number" />
+      </span>
+
+      <span class="flexrow">
+        <label class="generic-label">Durée </label>
+        <input type="text" class="padd-right status-small-label color-class-common" name="system.duree" value="{{data.duree}}" data-dtype="String" />
+      </span>
+
+      <div class="flexcol">
+      {{> systems/fvtt-mournblade/templates/partial-item-description.html}}
+
+    </div>
+      
+    </section>
+</form>

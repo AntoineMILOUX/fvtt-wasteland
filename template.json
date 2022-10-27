@@ -1,0 +1,265 @@
+{
+  "Actor": {
+    "types": [
+      "personnage",
+      "pnj"
+    ],
+    "templates": {
+      "biodata": {
+        "biodata": {
+          "name": "",
+          "age": 0,
+          "alignement": "",
+          "poids": "",
+          "taille": "",
+          "cheveux": "",
+          "sexe": "",
+          "yeux": "",
+          "description": "",
+          "amemultiplier": 2,
+          "notes": "",
+          "gmnotes": ""
+        }
+      },
+      "core": {
+        "subactors": [],
+        "attributs": {
+          "adr": {
+            "label": "Adresse",
+            "labelnorm": "adresse",
+            "abbrev": "adr",
+            "value": 1
+          },
+          "pui": {
+            "label": "Puissance",
+            "labelnorm": "puissance",
+            "abbrev": "pui",
+            "value": 1
+          },
+          "cla": {
+            "label": "Clairvoyance",
+            "labelnorm": "clairvoyance",
+            "abbrev": "cla",
+            "value": 1
+          },
+          "pre": {
+            "label": "Présence",
+            "labelnorm": "presence",
+            "abbrev": "pre",
+            "value": 0
+          },
+          "tre": {
+            "label": "Trempe",
+            "labelnorm": "trempe",
+            "abbrev": "tre",
+            "value": 0
+          }
+        },
+        "bonneaventure": {
+          "base": 0,
+          "actuelle": 0
+        },
+        "experience": {
+          "value": 0
+        },
+        "eclat": {
+          "value": 0
+        },
+        "sante": {
+          "base": 0,
+          "bonus": 0,
+          "nonletaux": 0,
+          "letaux": 0,
+          "sequelles": ""
+        },
+        "ame": {
+          "fullmax": 0,
+          "currentmax": 0,
+          "value": 0,
+          "traumatismes": ""
+        },
+        "combat": {
+          "initbonus": 0,
+          "vitessebonus": 0,
+          "bonusdegats": 0,
+          "defensebonus": 0
+        },
+        "balance": {
+          "loi": 0,
+          "chaos": 0,
+          "aspect": 0,
+          "marge": 0,
+          "pointschaos": 0,
+          "pointsloi": 0
+        }
+      },
+      "npccore": {
+        "npctype": "",
+        "description": ""
+      }
+    },
+    "personnage": {
+      "templates": [
+        "biodata",
+        "core"
+      ]
+    },
+    "pnj": {
+      "templates": [
+        "npccore"
+      ]
+    }
+  },
+  "Item": {
+    "templates": {
+      "base": {
+        "description": ""
+      }
+    },
+    "types": [
+      "arme",
+      "competence",
+      "protection",
+      "pacte",
+      "traitchaotique",
+      "monnaie",
+      "don",
+      "tendance",
+      "rune",
+      "equipement",
+      "capacite",
+      "origine",
+      "heritage",
+      "metier",
+      "runeeffect",
+      "bouclier"
+    ],
+    "runeeffect": {
+      "rune": "",
+      "mode": "",
+      "duree": "",
+      "pointame": 0,
+      "templates": [
+        "base"
+      ]
+    },
+    "origine": {
+      "templates": [
+        "base"
+      ]
+    },
+    "heritage": {
+      "templates": [
+        "base"
+      ]
+    },
+    "metier": {
+      "templates": [
+        "base"
+      ]
+    },
+    "capacite": {
+      "templates": [
+        "base"
+      ]
+    },
+    "equipement": {
+      "rarete": 0,
+      "prix": 0,
+      "templates": [
+        "base"
+      ]
+    },
+    "arme": {
+      "typearme": "",
+      "isdefense": false,
+      "bonusmaniementoff": 0,
+      "bonusmaniementdef": 0,
+      "degats": "",
+      "nonletaux": false,
+      "deuxmains": false,
+      "courte": 0,
+      "moyenne": 0,
+      "longue": 0,
+      "tr": 0,
+      "rarete": 0,
+      "prix": 0,
+      "equipped": false,
+      "templates": [
+        "base"
+      ]
+    },
+    "competence": {
+      "niveau": 0,
+      "attribut1": "",
+      "attribut2": "",
+      "attribut3": "",
+      "doublebonus": false,
+      "predilections": [],
+      "templates": [
+        "base"
+      ]
+    },
+    "protection": {
+      "typeprotection": "",
+      "protection": 0,
+      "degats": "",
+      "rarete": 0,
+      "prix": 0,
+      "equipped": false,
+      "templates": [
+        "base"
+      ]
+    },
+    "bouclier": {
+      "bonusdefense": 0,
+      "degats": "",
+      "nonletaux": false,
+      "rarete": 0,
+      "prix": 0,
+      "equipped": false,
+      "templates": [
+        "base"
+      ]
+    },
+    "pacte": {
+      "allegeance": "",
+      "templates": [
+        "base"
+      ]
+    },
+    "traitchaotique": {
+      "templates": [
+        "base"
+      ]
+    },
+    "monnaie": {
+      "templates": [
+        "base"
+      ]
+    },
+    "don": {
+      "allegeance": "",
+      "prerequis": "",
+      "sacrifice": "",
+      "templates": [
+        "base"
+      ]
+    },
+    "tendance": {
+      "allegeance": "",
+      "templates": [
+        "base"
+      ]
+    },
+    "rune": {
+      "formule": "",
+      "seuil": 0,
+      "prononcee": "",
+      "tracee": "",
+      "templates": [
+        "base"
+      ]
+    }
+  }
+}

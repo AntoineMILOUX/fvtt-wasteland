@@ -1,0 +1,27 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="item-sheet-img" src="{{img}}" data-edit="img" title="{{name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+    
+    <div class="flexcol">
+      <span class="flexrow">
+        <label class="generic-label">Rareté  </label>
+        <input type="text" class="padd-right status-small-label color-class-common" name="system.rarete" value="{{data.rarete}}" data-dtype="Number" />
+      </span>
+      <span class="flexrow">
+        <label class="generic-label">Prix  </label>
+        <input type="text" class="padd-right status-small-label color-class-common" name="system.prix" value="{{data.prix}}" data-dtype="Number" />
+      </span>
+
+      {{> systems/fvtt-mournblade/templates/partial-item-description.html}}
+
+    </div>
+      
+    </section>
+</form>

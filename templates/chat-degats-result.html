@@ -1,0 +1,26 @@
+<div class="chat-message-header">
+  {{#if actorImg}}
+  <img class="actor-icon" src="{{actorImg}}" alt="{{alias}}" />
+  {{/if}}
+  <h4 class=chat-actor-name>{{alias}}</h4>
+</div>
+
+<hr>
+
+{{#if actionImg}}
+<div>
+  <img class="chat-icon" src="{{actionImg}}" alt="{{name}}" />
+</div>
+{{/if}}
+
+<div class="flexcol">
+</div>
+
+<div>
+  <ul>
+    <li>Arme : {{arme.name}} (+{{arme.system.totalDegats}})</li>
+    <li>Dégats : {{finalResult}} {{#if arme.system.nonletaux}}(Non létaux){{else}}(Létaux){{/if}}</li>    
+  </ul>
+</div>
+
+</div>

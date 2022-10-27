@@ -1,0 +1,234 @@
+/*  ------ BODY -------- */
+* {
+  /* image cursor */
+  cursor: url("data:image/x-icon;base64,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"),
+    auto;
+}
+body {
+
+}
+.container {
+  width: 80%;
+  height: 100vh;
+}
+
+#main {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 940px;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+}
+
+#main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
+  background: url("https://i.pinimg.com/564x/47/f1/78/47f17851de7f3087c899124f27e286d1.jpg");
+  background-blend-mode: lighten;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+button {
+  background-color: #1e1e1e;
+  color: white;
+  border: none;
+  padding: 10px 8px;
+  border-radius: 3px;
+}
+
+.bloc {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+}
+
+.bonne-aventure {
+  display: flex;
+  width: 80%;
+  gap: 10px;
+  align-items: center;
+}
+
+.rounded-input {
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+  background-color: #1e1e1e;
+  border-radius: 5px;
+  border: 1px solid #1e1e1e;
+  color: white;
+  height: 20%;
+  font-size: 0.8em;
+  font-size: large;
+  text-align: center;
+  font-weight: bold;
+}
+
+.circle-input {
+  padding: 10px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  background-color: #1e1e1e;
+  text-align: center;
+   color: white;
+  font-size: 0.8em;
+  font-size: large;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ---------- HIDE ARROW NUMBER INPUT ----------- */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* -------- SEPARATOR ------- */
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 0.9em;
+  width: 100%;
+}
+.separator::before,
+.separator::after {
+  content: "";
+  display: inline-block;
+  width: 70px;
+  border-bottom: 2px solid #000;
+}
+.separator::before {
+  margin-right: 0.75em;
+}
+.separator::after {
+  margin-left: 0.75em;
+}
+
+/* -------- SEPARATOR FULL WIDTH ------- */
+.second-row .separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 1.2em;
+}
+.second-row .separator::before,
+.second-row .separator::after {
+  content: "";
+  display: inline-block;
+  width: 600px;
+  border-bottom: 2px solid #000;
+}
+.second-row .separator::before {
+  margin-right: 0.75em;
+}
+.second-row .separator::after {
+  margin-left: 0.75em;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  margin-top: 20px;
+}
+
+.second-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.attributs {
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+.attribut{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.brown {
+  color: #1e1e1e;
+}
+
+.p-2 {
+  padding: 20px;
+}
+
+.pl-0 {
+  padding-left: 0;
+}
+
+.pr-0 {
+  padding-right: 0;
+}
+.third-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 20px;
+}
+.first-col{
+  width: 67%;
+}
+.second-col{
+  width: 30%;
+}
+.comp-label{
+  word-wrap: break-word;
+  width: 100px;
+  font-size: 1.2em;
+}
+.input-comp{
+  align-items: center;
+  display: flex;
+}
+.comp-row{
+  display: flex;
+  justify-content: flex-start;
+  gap: 50px;
+  margin-top: 20px;
+  height:50px;
+  align-items: center;
+}
+.comp-row input {
+ width: 50px;
+ margin-right: 5px;
+}
+.comp-row input:first-child {
+  margin-right: 20px;
+}

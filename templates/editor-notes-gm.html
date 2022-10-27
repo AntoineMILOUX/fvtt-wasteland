@@ -1,0 +1,6 @@
+{{#if data.isGM}}
+<h3>GM Notes : </h3>
+<div class="form-group editor">
+  {{editor data.biodata.gmnotes target="system.biodata.gmnotes" button=true owner=owner editable=editable}}
+</div>
+{{/if}}

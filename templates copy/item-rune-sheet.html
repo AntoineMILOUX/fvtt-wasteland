@@ -1,0 +1,39 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="item-sheet-img" src="{{img}}" data-edit="img" title="{{name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+    
+    <div class="flexcol">
+      <span class="flexrow">
+        <label class="generic-label">Haut-Parler : </label>
+        <input type="text" class="padd-right status-small-label color-class-common" name="system.formule" value="{{data.formule}}" data-dtype="String" />
+      </span>
+      <span class="flexrow">
+        <label class="generic-label">Seuil de difficulté : </label>
+        <input type="text" class="padd-right status-small-label color-class-common" name="system.seuil" value="{{data.seuil}}" data-dtype="Number" />
+      </span>
+      <span class="flexrow">
+        <label class="generic-label">Rune prononcée : </label>
+      </span>
+      <span class="flexrow">
+        <input type="text" class="padd-right status-small-label color-class-common" name="system.prononcee" value="{{data.prononcee}}" data-dtype="String" />
+      </span>
+      <span class="flexrow">
+        <label class="generic-label">Rune tracée : </label>
+      </span>
+      <span class="flexrow">
+        <input type="text" class="padd-right status-small-label color-class-common" name="system.tracee" value="{{data.tracee}}" data-dtype="String" />
+      </span>
+
+      {{> systems/fvtt-mournblade/templates/partial-item-description.html}}
+
+    </div>
+      
+    </section>
+</form>

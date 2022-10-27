@@ -1,0 +1,31 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="item-sheet-img" src="{{img}}" data-edit="img" title="{{name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+    
+    <div class="flexcol">
+      <span class="flexrow">
+        <label class="generic-label">Allégeance : </label>
+        <select class="status-small-label color-class-common" type="text" name="system.allegeance" value="{{data.allegeance}}" data-dtype="string" >
+          {{#select data.allegeance}}
+          <option value="tous">Tous</option>
+          <option value="chaos">Chaos</option>
+          <option value="loi">Loi</option>
+          <option value="betes">Seigneurs des Bêtes</option>
+          <option value="elementaires">Seigneurs Elementaires</option>
+          {{/select}}
+        </select> 
+      </span>
+
+      {{> systems/fvtt-mournblade/templates/partial-item-description.html}}
+
+    </div>
+      
+    </section>
+</form>

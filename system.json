@@ -1,0 +1,143 @@
+{
+  "id": "fvtt-mournblade",
+  "description": "Mournblade RPG for FoundryVTT",
+  "version": "10.0.11",
+  "authors": [
+    {
+      "name": "Uberwald/LeRatierBretonnien",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "modules/mournblade-main.js"
+  ],
+  "gridDistance": 5,
+  "gridUnits": "m",
+  "license": "LICENSE.txt",
+  "manifest": "https://www.uberwald.me/gitea/public/fvtt-mournblade/raw/branch/v10/system.json",
+  "download": "https://www.uberwald.me/gitea/public/fvtt-mournblade/archive/fvtt-mournblade-10.0.11.zip",
+  "packs": [
+    {
+      "type": "Item",
+      "label": "Compétences",
+      "name": "skills",
+      "path": "packs/skills.db",
+      "system": "fvtt-mournblade",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "type": "Item",
+      "label": "Armes & Boucliers",
+      "name": "armes",
+      "path": "packs/armes.db",
+      "system": "fvtt-mournblade",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "type": "Item",
+      "label": "Protections",
+      "name": "protection",
+      "path": "packs/protection.db",
+      "system": "fvtt-mournblade",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "type": "Item",
+      "label": "Equipement",
+      "name": "equipement",
+      "path": "packs/equipement.db",
+      "system": "fvtt-mournblade",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "label": "Dons",
+      "type": "Item",
+      "name": "dons",
+      "path": "packs/dons.db",
+      "system": "fvtt-mournblade",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "type": "Item",
+      "label": "Origines",
+      "name": "origines",
+      "path": "packs/origines.db",
+      "system": "fvtt-mournblade",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "type": "Item",
+      "label": "Héritages",
+      "name": "heritages",
+      "path": "packs/heritages.db",
+      "system": "fvtt-mournblade",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "type": "Item",
+      "label": "Métiers",
+      "name": "metiers",
+      "path": "packs/metiers.db",
+      "system": "fvtt-mournblade",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "type": "Item",
+      "label": "Tendances",
+      "name": "tendances",
+      "path": "packs/tendances.db",
+      "system": "fvtt-mournblade",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "type": "Item",
+      "label": "Traits chaotiques",
+      "name": "traits-chaotiques",
+      "path": "packs/traits-chaotiques.db",
+      "system": "fvtt-mournblade",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "type": "Item",
+      "label": "Runes",
+      "name": "runes",
+      "path": "packs/runes.db",
+      "system": "fvtt-mournblade",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "type": "RollTable",
+      "label": "Tables",
+      "name": "tables",
+      "path": "packs/tables.db",
+      "system": "fvtt-mournblade",
+      "private": false,
+      "flags": {}
+    }
+  ],
+  "primaryTokenAttribute": "secondary.health",
+  "secondaryTokenAttribute": "secondary.delirium",
+  "socket": true,
+  "styles": [
+    "styles/simple.css"
+  ],
+  "title": "Mournblade",
+  "url": "https://www.uberwald.me/gitea/public/fvtt-mournblade",
+  "background": "systems/fvtt-mournblade/assets/ui/fond_wasteland.webp",
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10.286",
+    "maximum": "10"
+  }
+}

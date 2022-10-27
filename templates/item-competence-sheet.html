@@ -1,0 +1,81 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="item-sheet-img" src="{{img}}" data-edit="img" title="{{name}}" />
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name" /></h1>
+    </div>
+  </header>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    <div class="flexcol">
+      <span class="flexrow">
+        <label class="generic-label">Niveau : </label>
+        <input type="text" class="padd-right status-small-label color-class-common" name="data.niveau"
+          value="{{data.niveau}}" data-dtype="Number" />
+      </span>
+      <span class="flexrow">
+        <label class="generic-label">Attribut 1 : </label>
+        <select class="status-small-label color-class-common" type="text" name="system.attribut1"
+          value="{{data.attribut1}}" data-dtype="string">
+          {{#select data.attribut1}}
+          {{#each attributs as |attrLabel attrKey|}}
+          <option value="{{attrKey}}">{{attrLabel}}</option>
+          {{/each}}
+          {{/select}}
+        </select>
+      </span>
+      <span class="flexrow">
+        <label class="generic-label">Attribut 2 : </label>
+        <select class="status-small-label color-class-common" type="text" name="system.attribut2"
+          value="{{data.attribut2}}" data-dtype="string">
+          <option value="none">Aucun</option>
+          {{#select data.attribut2}}
+          {{#each attributs as |attrLabel attrKey|}}
+          <option value="{{attrKey}}">{{attrLabel}}</option>
+          {{/each}}
+          {{/select}}
+        </select>
+      </span>
+      <span class="flexrow">
+        <label class="generic-label">Attribut 3 : </label>
+        <select class="status-small-label color-class-common" type="text" name="system.attribut3"
+          value="{{data.attribut3}}" data-dtype="string">
+          <option value="none">Aucun</option>
+          {{#select data.attribut3}}
+          {{#each attributs as |attrLabel attrKey|}}
+          <option value="{{attrKey}}">{{attrLabel}}</option>
+          {{/each}}
+          {{/select}}
+        </select>
+      </span>
+      
+      <span class="flexrow">
+        <label class="generic-label">Les bonus de Bonne Aventure et d'Eclat peuvent être doublés (cf. Métier) ? </label>
+        <input class="" type="checkbox" name="system.doublebonus" {{checked data.doublebonus}}/>
+      </span>
+      
+      <span class="flexrow">
+        <h3>Prédilections</h3>
+      </span>
+      <ul>
+          {{#each data.predilections as |predilection key|}}
+          <li class="prediction-item item flexrow" data-prediction-index="{{key}}">
+              <input type="text" class="padd-right color-class-common edit-prediction"
+                name="system.predilections[{{key}}]" value="{{predilection.name}}" data-dtype="String" />
+                <label class="generic-label">Utilisée ? <input class="use-prediction" type="checkbox" name="predilection.used"  {{checked predilection.used}} /></label>
+                <a class="item-control delete-prediction" title="Supprimer une predilection"><i class="fas fa-trash"></i></a>
+          </li>
+          {{/each}}
+        </ul>
+      <span class="flexrow">
+        <button id="add-predilection" class="chat-card-button">Ajouter une prédilection</button>
+      </span>
+      
+      {{> systems/fvtt-mournblade/templates/partial-item-description.html}}
+
+    </div>
+
+  </section>
+</form>
