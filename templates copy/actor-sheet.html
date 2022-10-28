@@ -20,7 +20,7 @@
                 <select class="status-small-label color-class-common item-field-label-short" type="text"
                   name="system.balance.pointsloi" value="{{data.balance.pointsloi}}" data-dtype="Number">
                   {{#select data.balance.pointsloi}}
-                  {{> systems/fvtt-mournblade/templates/partial-list-niveau.html}}
+                  {{> systems/fvtt-wasteland/templates/partial-list-niveau.html}}
                   {{/select}}
                 </select>
 
@@ -36,7 +36,7 @@
                 <label class="item-name-label competence-name item-field-label-short">Points</label><select class="status-small-label color-class-common item-field-label-short" type="text"
                   name="system.balance.pointschaos" value="{{data.balance.pointschaos}}" data-dtype="Number">
                   {{#select data.balance.pointschaos}}
-                  {{> systems/fvtt-mournblade/templates/partial-list-niveau.html}}
+                  {{> systems/fvtt-wasteland/templates/partial-list-niveau.html}}
                   {{/select}}
                 </select>
                 <label class="item-name-label competence-name item-field-label-medium">Marge {{marge}}</label>
@@ -91,13 +91,13 @@
           <ul class="item-list alternate-list">
             {{#each data.attributs as |attr key|}}
             <li class="item flexrow " data-attr-key="{{key}}">
-              <img class="item-name-img" src="systems/fvtt-mournblade/assets/icons/{{attr.labelnorm}}.webp">
+              <img class="item-name-img" src="systems/fvtt-wasteland/assets/icons/{{attr.labelnorm}}.webp">
               <span class="item-name-label competence-name item-field-label-medium"><a
                   class="roll-attribut">{{attr.label}}</a></span>
               <select class="status-small-label color-class-common item-field-label-short" type="text"
                 name="system.attributs.{{key}}.value" value="{{attr.value}}" data-dtype="Number">
                 {{#select attr.value}}
-                {{> systems/fvtt-mournblade/templates/partial-list-niveau.html}}
+                {{> systems/fvtt-wasteland/templates/partial-list-niveau.html}}
                 {{/select}}
               </select>
             </li>
@@ -201,7 +201,7 @@
               <select class="status-small-label color-class-common edit-item-data competence-niveau" type="text"
                 data-item-field="niveau" value="{{skill.system.niveau}}" data-dtype="Number">
                 {{#select skill.system.niveau}}
-                {{> systems/fvtt-mournblade/templates/partial-list-niveau.html}}
+                {{> systems/fvtt-wasteland/templates/partial-list-niveau.html}}
                 {{/select}}
               </select>
 

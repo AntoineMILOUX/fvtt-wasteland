@@ -1,5 +1,5 @@
 /**
- * Mournblade system
+ * Wasteland system
  * Author: Uberwald
  * Software License: Prop
  */
@@ -8,13 +8,13 @@
 
 /* -------------------------------------------- */
 // Import Modules
-import { MournbladeActor } from "./mournblade-actor.js";
-import { MournbladeItemSheet } from "./mournblade-item-sheet.js";
-import { MournbladeActorSheet } from "./mournblade-actor-sheet.js";
-//import { MournbladeNPCSheet } from "./mournblade-npc-sheet.js";
-import { MournbladeUtility } from "./mournblade-utility.js";
-import { MournbladeCombat } from "./mournblade-combat.js";
-import { MournbladeItem } from "./mournblade-item.js";
+import { WastelandActor } from "./wasteland-actor.js";
+import { WastelandItemSheet } from "./wasteland-item-sheet.js";
+import { WastelandActorSheet } from "./wasteland-actor-sheet.js";
+//import { WastelandNPCSheet } from "./wasteland-npc-sheet.js";
+import { WastelandUtility } from "./wasteland-utility.js";
+import { WastelandCombat } from "./wasteland-combat.js";
+import { WastelandItem } from "./wasteland-item.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -22,11 +22,11 @@ import { MournbladeItem } from "./mournblade-item.js";
 
 /************************************************************************************/
 Hooks.once("init", async function () {
-  console.log(`Initializing Mournblade RPG`);
+  console.log(`Initializing Wasteland RPG`);
 
   /* -------------------------------------------- */
   // preload handlebars templates
-  MournbladeUtility.preloadHandlebarsTemplates();
+  WastelandUtility.preloadHandlebarsTemplates();
 
   /* -------------------------------------------- */
   // Set an initiative formula for the system 
@@ -36,27 +36,27 @@ Hooks.once("init", async function () {
   };
 
   /* -------------------------------------------- */
-  game.socket.on("system.fvtt-mournblade-rpg", data => {
-    MournbladeUtility.onSocketMesssage(data);
+  game.socket.on("system.fvtt-wasteland-rpg", data => {
+    WastelandUtility.onSocketMesssage(data);
   });
 
   /* -------------------------------------------- */
   // Define custom Entity classes
-  CONFIG.Combat.documentClass = MournbladeCombat
-  CONFIG.Actor.documentClass = MournbladeActor
-  CONFIG.Item.documentClass = MournbladeItem
-  game.system.mournblade = { }
+  CONFIG.Combat.documentClass = WastelandCombat
+  CONFIG.Actor.documentClass = WastelandActor
+  CONFIG.Item.documentClass = WastelandItem
+  game.system.wasteland = { }
 
   /* -------------------------------------------- */
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("fvtt-mournblade", MournbladeActorSheet, { types: ["personnage"], makeDefault: true })
-  //Actors.registerSheet("fvtt-mournblade", MournbladeNPCSheet, { types: ["npc"], makeDefault: false });
+  Actors.registerSheet("fvtt-wasteland", WastelandActorSheet, { types: ["personnage"], makeDefault: true })
+  //Actors.registerSheet("fvtt-wasteland", WastelandNPCSheet, { types: ["npc"], makeDefault: false });
 
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("fvtt-mournblade", MournbladeItemSheet, { makeDefault: true })
+  Items.registerSheet("fvtt-wasteland", WastelandItemSheet, { makeDefault: true })
 
-  MournbladeUtility.init();
+  WastelandUtility.init();
   
 });
 
@@ -65,10 +65,10 @@ function welcomeMessage() {
   ChatMessage.create({
     user: game.user.id,
     whisper: [game.user.id],
-    content: `<div id="welcome-message-Mournblade"><span class="rdd-roll-part">
-    <strong>Bienvenue dans les Jeunes Royaumes de Mournblade !</strong>
-    <p>Les livres de Mournblade sont nécessaires pour jouer : https://www.titam-france.fr</p>
-    <p>Mournblade est jeude rôle publié par Titam France/Sombres projets, tout les droits leur appartiennent.<p>
+    content: `<div id="welcome-message-Wasteland"><span class="rdd-roll-part">
+    <strong>Bienvenue dans le Wasteland !</strong>
+    <p>Les livres de Wasteland sont nécessaires pour jouer : https://www.titam-france.fr</p>
+    <p>Wasteland est jeude rôle publié par Titam France/Sombres projets, tout les droits leur appartiennent.<p>
     ` });
 }
 
@@ -103,7 +103,7 @@ function registerUsageCount( registerKey ) {
 /* -------------------------------------------- */
 Hooks.once("ready", function () {
 
-  MournbladeUtility.ready();
+  WastelandUtility.ready();
   // User warning
   if (!game.user.isGM && game.user.character == undefined) {
     ui.notifications.info("Attention ! Aucun personnage n'est relié au joueur !");
@@ -118,7 +118,7 @@ Hooks.once("ready", function () {
     let sidebar = document.getElementById("sidebar");
     sidebar.style.width = "min-content";
   }
-  registerUsageCount('fvtt-mournblade')
+  registerUsageCount('fvtt-wasteland')
   welcomeMessage();
 });
 
@@ -129,7 +129,7 @@ Hooks.on("chatMessage", (html, content, msg) => {
   if (content[0] == '/') {
     let regExp = /(\S+)/g;
     let commands = content.match(regExp);
-    if (game.system.mournblade.commands.processChatCommand(commands, content, msg)) {
+    if (game.system.wasteland.commands.processChatCommand(commands, content, msg)) {
       return false;
     }
   }

@@ -1,17 +1,17 @@
-import { MournbladeUtility } from "./mournblade-utility.js";
+import { WastelandUtility } from "./wasteland-utility.js";
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class MournbladeItemSheet extends ItemSheet {
+export class WastelandItemSheet extends ItemSheet {
 
   /** @override */
   static get defaultOptions() {
 
     return mergeObject(super.defaultOptions, {
-      classes: ["fvtt-mournblade", "sheet", "item"],
-      template: "systems/fvtt-mournblade/templates/item-sheet.html",
+      classes: ["fvtt-wasteland", "sheet", "item"],
+      template: "systems/fvtt-wasteland/templates/item-sheet.html",
       dragDrop: [{ dragSelector: null, dropSelector: null }],
       width: 620,
       height: 550
@@ -58,7 +58,7 @@ export class MournbladeItemSheet extends ItemSheet {
       name: objectData.name,
       editable: this.isEditable,
       cssClass: this.isEditable ? "editable" : "locked",
-      attributs: MournbladeUtility.getAttributs(),
+      attributs: WastelandUtility.getAttributs(),
       data: itemData.system,
       limited: this.object.limited,
       options: this.options,
@@ -90,7 +90,7 @@ export class MournbladeItemSheet extends ItemSheet {
 
   /* -------------------------------------------- */
   postItem() {
-    let chatData = duplicate(MournbladeUtility.data(this.item));
+    let chatData = duplicate(WastelandUtility.data(this.item));
     if (this.actor) {
       chatData.actor = { id: this.actor.id };
     }
@@ -105,8 +105,8 @@ export class MournbladeItemSheet extends ItemSheet {
         payload: chatData,
       });
 
-    renderTemplate('systems/fvtt-Mournblade-rpg/templates/post-item.html', chatData).then(html => {
-      let chatOptions = MournbladeUtility.chatDataSetup(html);
+    renderTemplate('systems/fvtt-Wasteland-rpg/templates/post-item.html', chatData).then(html => {
+      let chatOptions = WastelandUtility.chatDataSetup(html);
       ChatMessage.create(chatOptions)
     });
   }
@@ -168,7 +168,7 @@ export class MournbladeItemSheet extends ItemSheet {
   /* -------------------------------------------- */
   get template() {
     let type = this.item.type;
-    return `systems/fvtt-mournblade/templates/item-${type}-sheet.html`;
+    return `systems/fvtt-wasteland/templates/item-${type}-sheet.html`;
   }
 
   /* -------------------------------------------- */

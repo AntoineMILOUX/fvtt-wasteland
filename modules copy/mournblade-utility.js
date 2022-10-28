@@ -1,26 +1,26 @@
 /* -------------------------------------------- */
-import { MournbladeCombat } from "./mournblade-combat.js";
-import { MournbladeCommands } from "./mournblade-commands.js";
+import { WastelandCombat } from "./wasteland-combat.js";
+import { WastelandCommands } from "./wasteland-commands.js";
 
 /* -------------------------------------------- */
-export class MournbladeUtility {
+export class WastelandUtility {
 
 
   /* -------------------------------------------- */
   static async init() {
-    Hooks.on('renderChatLog', (log, html, data) => MournbladeUtility.chatListeners(html))
-    Hooks.on("getChatLogEntryContext", (html, options) => MournbladeUtility.chatRollMenu(html, options))
+    Hooks.on('renderChatLog', (log, html, data) => WastelandUtility.chatListeners(html))
+    Hooks.on("getChatLogEntryContext", (html, options) => WastelandUtility.chatRollMenu(html, options))
 
     Hooks.on("getCombatTrackerEntryContext", (html, options) => {
-      MournbladeUtility.pushInitiativeOptions(html, options);
+      WastelandUtility.pushInitiativeOptions(html, options);
     })
     Hooks.on("dropCanvasData", (canvas, data) => {
-      MournbladeUtility.dropItemOnToken(canvas, data)
+      WastelandUtility.dropItemOnToken(canvas, data)
     });
 
     this.rollDataStore = {}
     this.defenderStore = {}
-    MournbladeCommands.init();
+    WastelandCommands.init();
 
     Handlebars.registerHelper('count', function (list) {
       return list.length;
@@ -80,7 +80,7 @@ export class MournbladeUtility {
 
   /* -------------------------------------------- */
   static async ready() {
-    const skills = await MournbladeUtility.loadCompendium("fvtt-mournblade.skills")
+    const skills = await WastelandUtility.loadCompendium("fvtt-wasteland.skills")
     this.skills = skills.map(i => i.toObject())
   }
 
@@ -92,7 +92,7 @@ export class MournbladeUtility {
 
   /* -------------------------------------------- */
   static async loadCompendium(compendium, filter = item => true) {
-    let compendiumData = await MournbladeUtility.loadCompendiumData(compendium);
+    let compendiumData = await WastelandUtility.loadCompendiumData(compendium);
     return compendiumData.filter(filter);
   }
 
@@ -105,13 +105,13 @@ export class MournbladeUtility {
 
     html.on("click", '.predilection-reroll', async event => {
       let predIdx = $(event.currentTarget).data("predilection-index")
-      let messageId = MournbladeUtility.findChatMessageId(event.currentTarget)
+      let messageId = WastelandUtility.findChatMessageId(event.currentTarget)
       let message = game.messages.get(messageId)
-      let rollData = message.getFlag("world", "mournblade-roll")
+      let rollData = message.getFlag("world", "wasteland-roll")
       let actor = game.actors.get(rollData.actorId)
       await actor.setPredilectionUsed(rollData.competence._id, predIdx)
       rollData.competence = duplicate(actor.getCompetence(rollData.competence._id))
-      MournbladeUtility.rollMournblade(rollData)
+      WastelandUtility.rollWasteland(rollData)
     })
   }
 
@@ -119,9 +119,9 @@ export class MournbladeUtility {
   static async preloadHandlebarsTemplates() {
 
     const templatePaths = [
-      'systems/fvtt-mournblade/templates/editor-notes-gm.html',
-      'systems/fvtt-mournblade/templates/partial-item-description.html',
-      'systems/fvtt-mournblade/templates/partial-list-niveau.html'
+      'systems/fvtt-wasteland/templates/editor-notes-gm.html',
+      'systems/fvtt-wasteland/templates/partial-item-description.html',
+      'systems/fvtt-wasteland/templates/partial-list-niveau.html'
     ]
     return loadTemplates(templatePaths);
   }
@@ -134,7 +134,7 @@ export class MournbladeUtility {
   }
 
   static findChatMessageId(current) {
-    return MournbladeUtility.getChatMessageId(MournbladeUtility.findChatMessage(current));
+    return WastelandUtility.getChatMessageId(WastelandUtility.findChatMessage(current));
   }
 
   static getChatMessageId(node) {
@@ -142,7 +142,7 @@ export class MournbladeUtility {
   }
 
   static findChatMessage(current) {
-    return MournbladeUtility.findNodeMatching(current, it => it.classList.contains('chat-message') && it.attributes.getNamedItem('data-message-id'))
+    return WastelandUtility.findNodeMatching(current, it => it.classList.contains('chat-message') && it.attributes.getNamedItem('data-message-id'))
   }
 
   static findNodeMatching(current, predicate) {
@@ -150,7 +150,7 @@ export class MournbladeUtility {
       if (predicate(current)) {
         return current;
       }
-      return MournbladeUtility.findNodeMatching(current.parentElement, predicate);
+      return WastelandUtility.findNodeMatching(current.parentElement, predicate);
     }
     return undefined;
   }
@@ -198,7 +198,7 @@ export class MournbladeUtility {
   }
   /* -------------------------------------------- */
   static saveRollData(rollData) {
-    game.socket.emit("system.fvtt-mournblade", {
+    game.socket.emit("system.fvtt-wasteland", {
       name: "msg_update_roll", data: rollData
     }); // Notify all other clients of the roll    
     this.updateRollData(rollData);
@@ -290,14 +290,14 @@ export class MournbladeUtility {
   }
 
   /* -------------------------------------------- */
-  static async rollMournblade(rollData) {
+  static async rollWasteland(rollData) {
 
     let actor = game.actors.get(rollData.actorId)
     if (rollData.attrKey == "tochoose") { // No attr selected, force address
       rollData.attrKey = "adr"
     }
     if (!rollData.attr) {
-      rollData.actionImg = "systems/fvtt-mournblade/assets/icons/" + actor.system.attributs[rollData.attrKey].labelnorm + ".webp"
+      rollData.actionImg = "systems/fvtt-wasteland/assets/icons/" + actor.system.attributs[rollData.attrKey].labelnorm + ".webp"
       rollData.attr = duplicate(actor.system.attributs[rollData.attrKey])
     }
 
@@ -348,13 +348,13 @@ export class MournbladeUtility {
     }
 
     this.createChatWithRollMode(rollData.alias, {
-      content: await renderTemplate(`systems/fvtt-mournblade/templates/chat-generic-result.html`, rollData)
+      content: await renderTemplate(`systems/fvtt-wasteland/templates/chat-generic-result.html`, rollData)
     }, rollData)
 
   }
 
   /* -------------------------------------------- */
-  static async bonusRollMournblade(rollData) {
+  static async bonusRollWasteland(rollData) {
     rollData.bonusFormula = rollData.addedBonus
 
     let bonusRoll = new Roll(rollData.bonusFormula).roll({ async: false })
@@ -366,7 +366,7 @@ export class MournbladeUtility {
     this.computeResult(rollData)
 
     this.createChatWithRollMode(rollData.alias, {
-      content: await renderTemplate(`systems/fvtt-mournblade/templates/chat-generic-result.html`, rollData)
+      content: await renderTemplate(`systems/fvtt-wasteland/templates/chat-generic-result.html`, rollData)
     }, rollData)
 
   }
@@ -449,7 +449,7 @@ export class MournbladeUtility {
     chatOptions.alias = chatOptions.alias || name
     let msg = await ChatMessage.create(chatOptions)
     console.log("=======>", rollData)
-    msg.setFlag("world", "mournblade-roll", rollData)
+    msg.setFlag("world", "wasteland-roll", rollData)
   }
 
   /* -------------------------------------------- */
@@ -462,13 +462,13 @@ export class MournbladeUtility {
       difficulte: 0,
       modificateur: 0,
     }
-    MournbladeUtility.updateWithTarget(rollData)
+    WastelandUtility.updateWithTarget(rollData)
     return rollData
   }
 
   /* -------------------------------------------- */
   static updateWithTarget(rollData) {
-    let target = MournbladeUtility.getTarget()
+    let target = WastelandUtility.getTarget()
     if (target) {
       rollData.defenderTokenId = target.id
       let defender = game.canvas.tokens.get(rollData.defenderTokenId).actor
@@ -491,16 +491,16 @@ export class MournbladeUtility {
     let msgId = li.data("message-id")
     let msg = game.messages.get(msgId)
     if (msg) {
-      let rollData = msg.getFlag("world", "mournblade-roll")
+      let rollData = msg.getFlag("world", "wasteland-roll")
       let actor = game.actors.get(rollData.actorId)
       actor.changeBonneAventure(changed)
       rollData.isReroll = true
       rollData.textBonus = "Bonus de Points d'Aventure"
       if (addedBonus == "reroll") {
-        MournbladeUtility.rollMournblade(rollData)
+        WastelandUtility.rollWasteland(rollData)
       } else {
         rollData.addedBonus = addedBonus
-        MournbladeUtility.bonusRollMournblade(rollData)
+        WastelandUtility.bonusRollWasteland(rollData)
       }
     }
   }
@@ -510,52 +510,52 @@ export class MournbladeUtility {
     let msgId = li.data("message-id")
     let msg = game.messages.get(msgId)
     if (msg) {
-      let rollData = msg.getFlag("world", "mournblade-roll")
+      let rollData = msg.getFlag("world", "wasteland-roll")
       let actor = game.actors.get(rollData.actorId)
       actor.changeEclat(changed)
       rollData.isReroll = true
       rollData.textBonus = "Bonus d'Eclat"
       rollData.addedBonus = addedBonus
-      MournbladeUtility.bonusRollMournblade(rollData)
+      WastelandUtility.bonusRollWasteland(rollData)
     }
   }
 
   /* -------------------------------------------- */
   static chatRollMenu(html, options) {
-    let canApply = li => canvas.tokens.controlled.length && li.find(".mournblade-roll").length
+    let canApply = li => canvas.tokens.controlled.length && li.find(".wasteland-roll").length
     let canApplyBALoyal = function (li) {
       let message = game.messages.get(li.attr("data-message-id"))
-      let rollData = message.getFlag("world", "mournblade-roll")
+      let rollData = message.getFlag("world", "wasteland-roll")
       let actor = game.actors.get(rollData.actorId)
       return (!rollData.isReroll && actor.getBonneAventure() > 0 && actor.getAlignement() == "loyal")
     }
     let canApplyPELoyal = function (li) {
       let message = game.messages.get(li.attr("data-message-id"))
-      let rollData = message.getFlag("world", "mournblade-roll")
+      let rollData = message.getFlag("world", "wasteland-roll")
       let actor = game.actors.get(rollData.actorId)
       return (!rollData.isReroll && actor.getEclat() > 0 && actor.getAlignement() == "loyal")
     }
     let canApplyBAChaotique = function (li) {
       let message = game.messages.get(li.attr("data-message-id"))
-      let rollData = message.getFlag("world", "mournblade-roll")
+      let rollData = message.getFlag("world", "wasteland-roll")
       let actor = game.actors.get(rollData.actorId)
       return (!rollData.isReroll && actor.getBonneAventure() > 0 && actor.getAlignement() == "chaotique")
     }
     let canApplyBAChaotique3 = function (li) {
       let message = game.messages.get(li.attr("data-message-id"))
-      let rollData = message.getFlag("world", "mournblade-roll")
+      let rollData = message.getFlag("world", "wasteland-roll")
       let actor = game.actors.get(rollData.actorId)
       return (!rollData.isReroll && actor.getBonneAventure() > 2 && actor.getAlignement() == "chaotique")
     }
     let canApplyPEChaotique = function (li) {
       let message = game.messages.get(li.attr("data-message-id"))
-      let rollData = message.getFlag("world", "mournblade-roll")
+      let rollData = message.getFlag("world", "wasteland-roll")
       let actor = game.actors.get(rollData.actorId)
       return (!rollData.isReroll && actor.getEclat() > 0 && actor.getAlignement() == "chaotique")
     }
     let hasPredilection = function (li) {
       let message = game.messages.get(li.attr("data-message-id"))
-      let rollData = message.getFlag("world", "mournblade-roll")
+      let rollData = message.getFlag("world", "wasteland-roll")
       let actor = game.actors.get(rollData.actorId)
       if (rollData.competence) {
         let nbPred = rollData.competence.data.predilections.filter(pred => !pred.used).length
@@ -565,7 +565,7 @@ export class MournbladeUtility {
     }
     let canCompetenceDouble = function (li) {
       let message = game.messages.get(li.attr("data-message-id"))
-      let rollData = message.getFlag("world", "mournblade-roll")
+      let rollData = message.getFlag("world", "wasteland-roll")
       let actor = game.actors.get(rollData.actorId)
       if (rollData.competence) {
         return rollData.competence.data.doublebonus
@@ -577,7 +577,7 @@ export class MournbladeUtility {
         name: "Ajouer +3 (1 point de Bonne Aventure)",
         icon: "<i class='fas fa-user-plus'></i>",
         condition: canApply && canApplyBALoyal,
-        callback: li => MournbladeUtility.applyBonneAventureRoll(li, -1, "+3")
+        callback: li => WastelandUtility.applyBonneAventureRoll(li, -1, "+3")
       }
     )
     options.push(
@@ -585,7 +585,7 @@ export class MournbladeUtility {
         name: "Ajouer +6 (1 point de Bonne Aventure)",
         icon: "<i class='fas fa-user-plus'></i>",
         condition: canApply && canApplyBALoyal && canCompetenceDouble,
-        callback: li => MournbladeUtility.applyBonneAventureRoll(li, -1, "+6")
+        callback: li => WastelandUtility.applyBonneAventureRoll(li, -1, "+6")
       }
     )
     options.push(
@@ -593,7 +593,7 @@ export class MournbladeUtility {
         name: "Ajouer +1d6 (1 point de Bonne Aventure)",
         icon: "<i class='fas fa-user-plus'></i>",
         condition: canApply && canApplyBAChaotique,
-        callback: li => MournbladeUtility.applyBonneAventureRoll(li, -1, "+1d6")
+        callback: li => WastelandUtility.applyBonneAventureRoll(li, -1, "+1d6")
       }
     )
     options.push(
@@ -601,7 +601,7 @@ export class MournbladeUtility {
         name: "Ajouer +2d6 (1 point de Bonne Aventure)",
         icon: "<i class='fas fa-user-plus'></i>",
         condition: canApply && canApplyBAChaotique && canCompetenceDouble,
-        callback: li => MournbladeUtility.applyBonneAventureRoll(li, -1, "+2d6")
+        callback: li => WastelandUtility.applyBonneAventureRoll(li, -1, "+2d6")
       }
     )
     options.push(
@@ -609,7 +609,7 @@ export class MournbladeUtility {
         name: "Relancer le dé (3 points de Bonne Aventure)",
         icon: "<i class='fas fa-user-plus'></i>",
         condition: canApply && canApplyBAChaotique3,
-        callback: li => MournbladeUtility.applyBonneAventureRoll(li, -3, "reroll")
+        callback: li => WastelandUtility.applyBonneAventureRoll(li, -3, "reroll")
       }
     )
     options.push(
@@ -617,7 +617,7 @@ export class MournbladeUtility {
         name: "Ajouter +10 (1 Point d'Eclat)",
         icon: "<i class='fas fa-user-plus'></i>",
         condition: canApply && canApplyPELoyal,
-        callback: li => MournbladeUtility.applyEclatRoll(li, -1, "+10")
+        callback: li => WastelandUtility.applyEclatRoll(li, -1, "+10")
       }
     )
     options.push(
@@ -625,7 +625,7 @@ export class MournbladeUtility {
         name: "Ajouter +20 (1 Point d'Eclat)",
         icon: "<i class='fas fa-user-plus'></i>",
         condition: canApply && canApplyPELoyal && canCompetenceDouble,
-        callback: li => MournbladeUtility.applyEclatRoll(li, -1, "+20")
+        callback: li => WastelandUtility.applyEclatRoll(li, -1, "+20")
       }
     )
     return options
