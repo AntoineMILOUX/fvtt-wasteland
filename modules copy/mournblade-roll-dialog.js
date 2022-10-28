@@ -1,14 +1,14 @@
-import { MournbladeUtility } from "./mournblade-utility.js";
+import { WastelandUtility } from "./wasteland-utility.js";
 
-export class MournbladeRollDialog extends Dialog {
+export class WastelandRollDialog extends Dialog {
 
   /* -------------------------------------------- */
   static async create(actor, rollData ) {
 
-    let options = { classes: ["MournbladeDialog"], width: 340, height: 420, 'z-index': 99999 };
-    let html = await renderTemplate('systems/fvtt-mournblade/templates/roll-dialog-generic.html', rollData);
+    let options = { classes: ["WastelandDialog"], width: 340, height: 420, 'z-index': 99999 };
+    let html = await renderTemplate('systems/fvtt-wasteland/templates/roll-dialog-generic.html', rollData);
 
-    return new MournbladeRollDialog(actor, rollData, html, options );
+    return new WastelandRollDialog(actor, rollData, html, options );
   }
 
   /* -------------------------------------------- */
@@ -44,7 +44,7 @@ export class MournbladeRollDialog extends Dialog {
   /* -------------------------------------------- */
   roll ( dice) {
     this.rollData.mainDice = dice
-    MournbladeUtility.rollMournblade( this.rollData )
+    WastelandUtility.rollWasteland( this.rollData )
   }
 
 

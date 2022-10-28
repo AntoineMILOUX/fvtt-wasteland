@@ -1,6 +1,6 @@
 /* -------------------------------------------- */
-import { MournbladeUtility } from "./mournblade-utility.js";
-import { MournbladeRollDialog } from "./mournblade-roll-dialog.js";
+import { WastelandUtility } from "./wasteland-utility.js";
+import { WastelandRollDialog } from "./wasteland-roll-dialog.js";
 
 /* -------------------------------------------- */
 const __degatsBonus = [-2, -2, -1, -1, 0, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10]
@@ -11,7 +11,7 @@ const __vitesseBonus = [-2, -2, -1, -1, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
-export class MournbladeActor extends Actor {
+export class WastelandActor extends Actor {
 
   /* -------------------------------------------- */
   /**
@@ -38,7 +38,7 @@ export class MournbladeActor extends Actor {
     }
 
     if (data.type == 'personnage') {
-      const skills = await MournbladeUtility.loadCompendium("fvtt-mournblade.skills")
+      const skills = await WastelandUtility.loadCompendium("fvtt-wasteland.skills")
       data.items = skills.map(i => i.toObject())
     }
     if (data.type == 'pnj') {
@@ -403,19 +403,19 @@ export class MournbladeActor extends Actor {
 
   /* -------------------------------------------- */
   getCommonRollData(attrKey = undefined, compId = undefined, compName = undefined) {
-    let rollData = MournbladeUtility.getBasicRollData()
+    let rollData = WastelandUtility.getBasicRollData()
     rollData.alias = this.name
     rollData.actorImg = this.img
     rollData.actorId = this.id
     rollData.img = this.img
     rollData.canEclatDoubleD20 = this.canEclatDoubleD20()
     rollData.doubleD20 = false
-    rollData.attributs = MournbladeUtility.getAttributs()
+    rollData.attributs = WastelandUtility.getAttributs()
 
     if (attrKey) {
       rollData.attrKey = attrKey
       if (attrKey != "tochoose") {
-        rollData.actionImg = "systems/fvtt-mournblade/assets/icons/" + this.system.attributs[attrKey].labelnorm + ".webp"
+        rollData.actionImg = "systems/fvtt-wasteland/assets/icons/" + this.system.attributs[attrKey].labelnorm + ".webp"
         rollData.attr = duplicate(this.system.attributs[attrKey])
       }
     }
@@ -434,7 +434,7 @@ export class MournbladeActor extends Actor {
   async rollAttribut(attrKey) {
     let rollData = this.getCommonRollData(attrKey)
     console.log("RollDatra", rollData)
-    let rollDialog = await MournbladeRollDialog.create(this, rollData)
+    let rollDialog = await WastelandRollDialog.create(this, rollData)
     rollDialog.render(true)
   }
 
@@ -442,7 +442,7 @@ export class MournbladeActor extends Actor {
   async rollCompetence(attrKey, compId) {
     let rollData = this.getCommonRollData(attrKey, compId)
     console.log("RollDatra", rollData)
-    let rollDialog = await MournbladeRollDialog.create(this, rollData)
+    let rollDialog = await WastelandRollDialog.create(this, rollData)
     rollDialog.render(true)
   }
 
@@ -459,7 +459,7 @@ export class MournbladeActor extends Actor {
     rollData.runemode = "prononcer"
     rollData.runeame  = 1
     console.log("runeData", rollData)
-    let rollDialog = await MournbladeRollDialog.create(this, rollData)
+    let rollDialog = await WastelandRollDialog.create(this, rollData)
     rollDialog.render(true)
   }
   
@@ -475,7 +475,7 @@ export class MournbladeActor extends Actor {
     let rollData = this.getCommonRollData(arme.system.attrKey, arme.system.competence._id)
     rollData.arme = arme
     console.log("ARME!", rollData)
-    let rollDialog = await MournbladeRollDialog.create(this, rollData)
+    let rollDialog = await WastelandRollDialog.create(this, rollData)
     rollDialog.render(true)
   }
 
@@ -489,7 +489,7 @@ export class MournbladeActor extends Actor {
       arme = this.prepareBouclier(arme)
     }
     let roll = new Roll(arme.system.totalDegats).roll({ async: false })
-    await MournbladeUtility.showDiceSoNice(roll, game.settings.get("core", "rollMode"));
+    await WastelandUtility.showDiceSoNice(roll, game.settings.get("core", "rollMode"));
     let rollData = {
       arme: arme,
       finalResult: roll.total,
@@ -498,8 +498,8 @@ export class MournbladeActor extends Actor {
       actorId: this.id,
       actionImg: arme.img,
     }
-    MournbladeUtility.createChatWithRollMode(rollData.alias, {
-      content: await renderTemplate(`systems/fvtt-mournblade/templates/chat-degats-result.html`, rollData)
+    WastelandUtility.createChatWithRollMode(rollData.alias, {
+      content: await renderTemplate(`systems/fvtt-wasteland/templates/chat-degats-result.html`, rollData)
     })
 
   }

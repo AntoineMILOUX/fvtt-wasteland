@@ -1,7 +1,7 @@
-import { MournbladeUtility } from "./mournblade-utility.js";
+import { WastelandUtility } from "./wasteland-utility.js";
 
 /* -------------------------------------------- */
-export class MournbladeCombat extends Combat {
+export class WastelandCombat extends Combat {
   
   /* -------------------------------------------- */
   async rollInitiative(ids, formula = undefined, messageOptions = {} ) {
@@ -11,7 +11,7 @@ export class MournbladeCombat extends Combat {
       let id = c._id || c.id;
       let initBonus = c.actor ? c.actor.getInitiativeScore() : 0
       let roll = new Roll("1d10 + "+initBonus).roll({ async: false})      
-      await MournbladeUtility.showDiceSoNice(roll, game.settings.get("core", "rollMode"))
+      await WastelandUtility.showDiceSoNice(roll, game.settings.get("core", "rollMode"))
       //console.log("Init bonus", initBonus, roll.total)
       await this.updateEmbeddedDocuments("Combatant", [ { _id: id, initiative: roll.total } ]);
     }

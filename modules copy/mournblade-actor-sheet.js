@@ -3,18 +3,18 @@
  * @extends {ActorSheet}
  */
 
-import { MournbladeUtility } from "./mournblade-utility.js";
-import { MournbladeRollDialog } from "./mournblade-roll-dialog.js";
+import { WastelandUtility } from "./wasteland-utility.js";
+import { WastelandRollDialog } from "./wasteland-roll-dialog.js";
 
 /* -------------------------------------------- */
-export class MournbladeActorSheet extends ActorSheet {
+export class WastelandActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {
 
     return mergeObject(super.defaultOptions, {
-      classes: ["fvtt-mournblade", "sheet", "actor"],
-      template: "systems/fvtt-mournblade/templates/actor-sheet.html",
+      classes: ["fvtt-wasteland", "sheet", "actor"],
+      template: "systems/fvtt-wasteland/templates/actor-sheet.html",
       width: 640,
       height: 720,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "stats" }],
@@ -84,7 +84,7 @@ export class MournbladeActorSheet extends ActorSheet {
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
-      MournbladeUtility.confirmDelete(this, li);
+      WastelandUtility.confirmDelete(this, li);
     })
     html.find('.edit-item-data').change(ev => {
       const li = $(ev.currentTarget).parents(".item")
@@ -157,7 +157,7 @@ export class MournbladeActorSheet extends ActorSheet {
 
   /* -------------------------------------------- */
   /*async _onDropItem(event, dragData) {
-    let item = await MournbladeUtility.searchItem( dragData)
+    let item = await WastelandUtility.searchItem( dragData)
     this.actor.preprocessItem( event, item, true )
     super._onDropItem(event, dragData)
   }*/

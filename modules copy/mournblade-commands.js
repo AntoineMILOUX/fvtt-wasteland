@@ -1,16 +1,16 @@
 /* -------------------------------------------- */
 
-import { MournbladeUtility } from "./mournblade-utility.js";
-import { MournbladeRollDialog } from "./mournblade-roll-dialog.js";
+import { WastelandUtility } from "./wasteland-utility.js";
+import { WastelandRollDialog } from "./wasteland-roll-dialog.js";
 
 /* -------------------------------------------- */
-export class MournbladeCommands {
+export class WastelandCommands {
 
   static init() {
-    if (!game.system.mournblade.commands) {
-      //const MournbladeCommands = new MournbladeCommands()
-      //MournbladeCommands.registerCommand({ path: ["/char"], func: (content, msg, params) => MournbladeCommands.createChar(msg), descr: "Create a new character" });
-      //game.system.mournblade.commands = MournbladeCommands
+    if (!game.system.wasteland.commands) {
+      //const WastelandCommands = new WastelandCommands()
+      //WastelandCommands.registerCommand({ path: ["/char"], func: (content, msg, params) => WastelandCommands.createChar(msg), descr: "Create a new character" });
+      //game.system.wasteland.commands = WastelandCommands
     }
   }
 
@@ -47,7 +47,7 @@ export class MournbladeCommands {
     if (path.length > 0 && path[0] && command.descr && (path.length != 1 || targetTable[path[0]] == undefined)) {
       return true;
     }
-    console.warn("MournbladeCommands._validateCommand failed ", targetTable, path, command);
+    console.warn("WastelandCommands._validateCommand failed ", targetTable, path, command);
     return false;
   }
 
@@ -98,8 +98,8 @@ export class MournbladeCommands {
 
   /* -------------------------------------------- */
   async createChar(msg) {
-    game.system.Mournblade.creator = new MournbladeActorCreate();
-    game.system.Mournblade.creator.start();
+    game.system.Wasteland.creator = new WastelandActorCreate();
+    game.system.Wasteland.creator.start();
   }
 
   /* -------------------------------------------- */
@@ -111,12 +111,12 @@ export class MournbladeCommands {
 
   /* -------------------------------------------- */
   async poolRoll( msg) {
-    let rollData = MournbladeUtility.getBasicRollData()
+    let rollData = WastelandUtility.getBasicRollData()
     rollData.alias = "Dice Pool Roll", 
     rollData.mode  = "generic"
     rollData.title = `Dice Pool Roll`;
     
-    let rollDialog = await MournbladeRollDialog.create( this, rollData);
+    let rollDialog = await WastelandRollDialog.create( this, rollData);
     rollDialog.render( true );
   }
 

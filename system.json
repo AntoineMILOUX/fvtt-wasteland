@@ -1,6 +1,6 @@
 {
-  "id": "fvtt-mournblade",
-  "description": "Mournblade RPG for FoundryVTT",
+  "id": "fvtt-wasteland",
+  "description": "Wasteland RPG for FoundryVTT",
   "version": "10.0.11",
   "authors": [
     {
@@ -9,20 +9,20 @@
     }
   ],
   "esmodules": [
-    "modules/mournblade-main.js"
+    "modules/wasteland-main.js"
   ],
   "gridDistance": 5,
   "gridUnits": "m",
   "license": "LICENSE.txt",
-  "manifest": "https://www.uberwald.me/gitea/public/fvtt-mournblade/raw/branch/v10/system.json",
-  "download": "https://www.uberwald.me/gitea/public/fvtt-mournblade/archive/fvtt-mournblade-10.0.11.zip",
+  "manifest": "https://github.com/AntoineMILOUX/fvtt-wasteland/raw/branch/v10/system.json",
+  "download": "https://github.com/AntoineMILOUX/fvtt-wasteland/archive/fvtt-wasteland-10.0.11.zip",
   "packs": [
     {
       "type": "Item",
       "label": "Compétences",
       "name": "skills",
       "path": "packs/skills.db",
-      "system": "fvtt-mournblade",
+      "system": "fvtt-wasteland",
       "private": false,
       "flags": {}
     },
@@ -31,7 +31,7 @@
       "label": "Armes & Boucliers",
       "name": "armes",
       "path": "packs/armes.db",
-      "system": "fvtt-mournblade",
+      "system": "fvtt-wasteland",
       "private": false,
       "flags": {}
     },
@@ -40,7 +40,7 @@
       "label": "Protections",
       "name": "protection",
       "path": "packs/protection.db",
-      "system": "fvtt-mournblade",
+      "system": "fvtt-wasteland",
       "private": false,
       "flags": {}
     },
@@ -49,7 +49,7 @@
       "label": "Equipement",
       "name": "equipement",
       "path": "packs/equipement.db",
-      "system": "fvtt-mournblade",
+      "system": "fvtt-wasteland",
       "private": false,
       "flags": {}
     },
@@ -58,7 +58,7 @@
       "type": "Item",
       "name": "dons",
       "path": "packs/dons.db",
-      "system": "fvtt-mournblade",
+      "system": "fvtt-wasteland",
       "private": false,
       "flags": {}
     },
@@ -67,7 +67,7 @@
       "label": "Origines",
       "name": "origines",
       "path": "packs/origines.db",
-      "system": "fvtt-mournblade",
+      "system": "fvtt-wasteland",
       "private": false,
       "flags": {}
     },
@@ -76,7 +76,7 @@
       "label": "Héritages",
       "name": "heritages",
       "path": "packs/heritages.db",
-      "system": "fvtt-mournblade",
+      "system": "fvtt-wasteland",
       "private": false,
       "flags": {}
     },
@@ -85,7 +85,7 @@
       "label": "Métiers",
       "name": "metiers",
       "path": "packs/metiers.db",
-      "system": "fvtt-mournblade",
+      "system": "fvtt-wasteland",
       "private": false,
       "flags": {}
     },
@@ -94,7 +94,7 @@
       "label": "Tendances",
       "name": "tendances",
       "path": "packs/tendances.db",
-      "system": "fvtt-mournblade",
+      "system": "fvtt-wasteland",
       "private": false,
       "flags": {}
     },
@@ -103,7 +103,7 @@
       "label": "Traits chaotiques",
       "name": "traits-chaotiques",
       "path": "packs/traits-chaotiques.db",
-      "system": "fvtt-mournblade",
+      "system": "fvtt-wasteland",
       "private": false,
       "flags": {}
     },
@@ -112,7 +112,7 @@
       "label": "Runes",
       "name": "runes",
       "path": "packs/runes.db",
-      "system": "fvtt-mournblade",
+      "system": "fvtt-wasteland",
       "private": false,
       "flags": {}
     },
@@ -121,7 +121,7 @@
       "label": "Tables",
       "name": "tables",
       "path": "packs/tables.db",
-      "system": "fvtt-mournblade",
+      "system": "fvtt-wasteland",
       "private": false,
       "flags": {}
     }
@@ -132,9 +132,9 @@
   "styles": [
     "styles/simple.css"
   ],
-  "title": "Mournblade",
-  "url": "https://www.uberwald.me/gitea/public/fvtt-mournblade",
-  "background": "systems/fvtt-mournblade/assets/ui/fond_wasteland.webp",
+  "title": "Wasteland",
+  "url": "https://www.uberwald.me/gitea/public/fvtt-wasteland",
+  "background": "systems/fvtt-wasteland/assets/ui/fond_wasteland.webp",
   "compatibility": {
     "minimum": "10",
     "verified": "10.286",
