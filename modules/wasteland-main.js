@@ -66,7 +66,7 @@ function welcomeMessage() {
     user: game.user.id,
     whisper: [game.user.id],
     content: `<div id="welcome-message-Wasteland"><span class="rdd-roll-part">
-    <strong>Bienvenue dans les Jeunes Royaumes de Wasteland !</strong>
+    <strong>Bienvenue dans le Wasteland !</strong>
     <p>Les livres de Wasteland sont nécessaires pour jouer : https://www.titam-france.fr</p>
     <p>Wasteland est jeude rôle publié par Titam France/Sombres projets, tout les droits leur appartiennent.<p>
     ` });
