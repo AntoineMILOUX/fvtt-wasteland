@@ -1,10 +1,9 @@
-<form class="{{cssClass}}" autocomplete="off">
-
-    <div id="main">
-      <div class="container">
-        {{!-- Sheet Header --}}
-        <header class="header-fields">
-          {{!-- Sheet Tab Navigation --}}
+<form class="{{cssClass}} characterSheet" autocomplete="off">
+  <div id="main">
+    <div class="container">
+      {{!-- Sheet Header --}}
+      <header class="header-fields">
+        <!-- {{!-- Sheet Tab Navigation --}}
         <div id="tabs-bar" class="row flex-between   pl-0 pr-0">
           <div class="tab">
             <button href="index.html">Caractéristiques</button>
@@ -18,7 +17,7 @@
           <div class="tab flex-">
             <button href="Description.html">Description</button>
           </div>
-        </div>
+        </div> -->
 
         <div class="row">
           <div class="bloc">
@@ -39,15 +38,18 @@
                 type="number"
                 id=""
                 class="rounded-input"
-                name="system.bonneaventure.actuelle" value="{{data.bonneaventure.actuelle}}" data-dtype="Number"
+                name="system.bonneaventure.actuelle"
+                value="{{data.bonneaventure.actuelle}}"
+                data-dtype="Number"
               />
               <input
                 type="number"
                 name="base-ba-input"
                 id=""
                 class="rounded-input"
-                name="system.bonneaventure.base" value="{{data.bonneaventure.base}}" data-dtype="Number" 
-
+                name="system.bonneaventure.base"
+                value="{{data.bonneaventure.base}}"
+                data-dtype="Number"
               />
               <span>Base</span>
             </div>
@@ -72,9 +74,10 @@
               <div class="input-adresse">
                 <input
                   type="number"
-                  name="input-adresse"
+                  name="system.attributs.adr.value"
                   id=""
                   class="circle-input"
+                  value="{{data.attributs.adr.value}}"
                 />
               </div>
             </div>
@@ -84,9 +87,10 @@
               <div class="input-puissance">
                 <input
                   type="number"
-                  name="input-adresse"
+                  name="system.attributs.pui.value"
                   id=""
                   class="circle-input"
+                  value="{{data.attributs.pui.value}}"
                 />
               </div>
             </div>
@@ -96,9 +100,10 @@
               <div class="input-clairvoyance">
                 <input
                   type="number"
-                  name="input-adresse"
                   id=""
                   class="circle-input"
+                  name="system.attributs.clair.value"
+                  value="{{data.attributs.cla.value}}"
                 />
               </div>
             </div>
@@ -108,9 +113,10 @@
               <div class="input-presence">
                 <input
                   type="number"
-                  name="input-adresse"
                   id=""
                   class="circle-input"
+                  name="system.attributs.pre.value"
+                  value="{{data.attributs.pre.value}}"
                 />
               </div>
             </div>
@@ -120,145 +126,87 @@
               <div class="input-trempe">
                 <input
                   type="number"
-                  name="input-adresse"
                   id=""
                   class="circle-input"
+                  name="system.attributs.tre.value"
+                  value="{{data.attributs.tre.value}}"
                 />
               </div>
             </div>
           </div>
-          <div class="third-row">
+          <div class="third-row mt-20">
             <div class="first-col">
+              <div class="separator">Compétences</div>
               <div class="competences">
-                <div class="separator">Compétences</div>
-                <div class="comp-row">
-                  <p class="comp-label">Armes à distance</p>
+                {{#each skills as |skill key|}}
+                <div
+                  class="comp-row"
+                  data-item-id="{{skill._id}}"
+                  data-item-type="competence"
+                >
+                  <p class="comp-label">{{skill.name}}</p>
                   <div class="input-comp">
+                    <select
+                      class="rounded-input"
+                      type="text"
+                      data-item-field="niveau"
+                      value="{{skill.system.niveau}}"
+                      data-dtype="Number"
+                    >
+                      {{#select skill.system.niveau}} {{>
+                      systems/fvtt-wasteland/templates/partial-list-niveau.html}}
+                      {{/select}}
+                    </select>
+                    {{#each comp.attributs as |attr key|}}
                     <input
                       type="number"
-                      name="input-armes-distance"
-                      id=""
-                      class="rounded-input armes-distance"
-                    />
-                    <input
-                      type="number"
-                      name="input-adresse"
+                      value="data.attributs.{{attr}}.value"
                       class="rounded-input adr-before"
                     />
+                    {{/each}} {{#if (ne skill.system.attribut1 "none")}}
+                    <span class="item-field-label-short">
+                      <button
+                        class="rounded-input"
+                        data-attr-key="{{skill.system.attribut1}}"
+                      >
+                        {{upper skill.system.attribut1}} :
+                        {{skill.system.attribut1total}}
+                      </button>
+                    </span>
+                    {{/if}} {{#if (ne skill.system.attribut2 "none")}}
+                    <span class="item-field-label-short">
+                      <button
+                        class="rounded-input"
+                        data-attr-key="{{skill.system.attribut2}}"
+                      >
+                        {{upper skill.system.attribut2}} :
+                        {{skill.system.attribut2total}}
+                      </button>
+                    </span>
+                    {{/if}} {{#if (ne skill.system.attribut3 "none")}}
+                    <span class="item-field-label-short">
+                      <button
+                        class="rounded-input"
+                        data-attr-key="{{skill.system.attribut3}}"
+                      >
+                        {{upper skill.system.attribut3}} :
+                        {{skill.system.attribut3total}}
+                      </button>
+                    </span>
+                    {{/if}}
                   </div>
                 </div>
-                <div class="comp-row">
-                  <p class="comp-label">Coercition</p>
-                  <div class="input-comp">
-                    <input
-                      type="number"
-                      name="input-coercition"
-                      id=""
-                      class="rounded-input"
-                    />
-
-                    <input
-                      type="number"
-                      name="input-presence"
-                      class="rounded-input"
-                    />
-                  </div>
-                </div>
-                <div class="comp-row">
-                  <p class="comp-label">Commerce</p>
-                  <div class="input-comp">
-                    <input
-                      type="number"
-                      name="input-commerce"
-                      id=""
-                      class="rounded-input"
-                    />
-
-                    <input
-                      type="number"
-                      name="input-presence"
-                      class="rounded-input presence"
-                    />
-                    <input
-                      type="number"
-                      name="input-presence"
-                      class="rounded-input"
-                    />
-                  </div>
-                </div>
-                <div class="comp-row">
-                  <p class="comp-label">Discrétion</p>
-                  <div class="input-comp">
-                    <input
-                      type="number"
-                      name="input-discretion"
-                      id=""
-                      class="rounded-input"
-                    />
-
-                    <input
-                      type="number"
-                      name="input-adresse"
-                      class="rounded-input"
-                    />
-                    <input
-                      type="number"
-                      name="input-trempe"
-                      class="rounded-input"
-                    />
-                  </div>
-                </div>
-                <div class="comp-row">
-                  <p class="comp-label">Filouterie</p>
-                  <div class="input-comp">
-                    <input
-                      type="number"
-                      name="input-filouterie"
-                      id=""
-                      class="rounded-input"
-                    />
-
-                    <input
-                      type="number"
-                      name="input-adresse"
-                      class="rounded-input adresse"
-                    />
-                  </div>
-                </div>
-                <div class="comp-row">
-                  <p class="comp-label">Mêlée</p>
-                  <div class="input-comp">
-                    <input
-                      type="number"
-                      name="input-melee"
-                      id=""
-                      class="rounded-input"
-                    />
-
-                    <input
-                      type="number"
-                      name="input-puissance"
-                      class="rounded-input"
-                    />
-                    <input
-                      type="number"
-                      name="input-presence"
-                      class="rounded-input"
-                    />
-                  </div>
-                </div>
+                {{/each}}
               </div>
-              <div class="savoirs"></div>
             </div>
             <div class="second-col">
-              <div class="sante"></div>
-              <div class="psyche"></div>
-              <div class="predilection"></div>
+              <div class="separator">Savoirs</div>
+              <div class="competences"></div>
             </div>
           </div>
         </div>
       </header>
-      </div>
     </div>
+  </div>
 </form>
  

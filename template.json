@@ -55,6 +55,75 @@
             "value": 0
           }
         },
+        "competences" : {
+          "armeDistance" : {
+            "label" : "Arme à distance",
+            "value" : 0,
+            "attributs" : ["adr"]
+          },
+          "coercition" : {
+            "label" : "Coercition",
+            "value" : 0,
+            "attributs" : ["pre"]
+          },
+          "commerce" : {
+            "label" : "Commerce",
+            "value" : 0,
+            "attributs" : ["cla","pre"]
+          },
+          "discretion" : {
+            "label" : "Discrétion",
+            "value" : 0,
+            "attributs" : ["adr", "tre"]
+          },
+          "filouterie" : {
+            "label" : "Filouterie",
+            "value" : 0,
+            "attributs" : ["adr"]
+          },
+          "melee" : {
+            "label" : "Mêlée",
+            "value" : 0,
+            "attributs" : ["pui"]
+          },
+          "mouvements" : {
+            "label" : "Mouvements",
+            "value" : 0,
+            "attributs" : ["cla","tre" ]
+          },
+          "nage" : {
+            "label" : "Nage",
+            "value" : 0,
+            "attributs" : ["adr","pui" ]
+          },
+          "navigation" : {
+            "label" : "Navigation",
+            "value" : 0,
+            "attributs" : ["cla"]
+          },
+          "perception" : {
+            "label" : "Perception",
+            "value" : 0,
+            "attributs" : ["cla"]
+          },
+          "persuasion" : {
+            "label" : "Persuasion",
+            "value" : 0,
+            "attributs" : ["pre"]
+          },
+          "soins" : {
+            "label" : "Soins",
+            "value" : 0,
+            "attributs" : ["adr","cla"]
+          },
+          "survie" : {
+            "label" : "Survie",
+            "value" : 0,
+            "attributs" : ["adr","cla"]
+
+          }
+
+        },
         "bonneaventure": {
           "base": 0,
           "actuelle": 0
@@ -189,7 +258,7 @@
         "base"
       ]
     },
-    "competence": {
+    "skills": {
       "niveau": 0,
       "attribut1": "",
       "attribut2": "",
