@@ -201,7 +201,67 @@
             </div>
             <div class="second-col">
               <div class="separator">Savoirs</div>
-              <div class="competences"></div>
+              <div class="competences">
+                {{#each savoirs as |savoir key|}}
+                <div
+                  class="comp-row"
+                  data-item-id="{{savoir._id}}"
+                  data-item-type="competence"
+                >
+                  <p class="comp-label">{{savoir.name}}</p>
+                  <div class="input-comp">
+                    <select
+                      class="rounded-input"
+                      type="text"
+                      data-item-field="niveau"
+                      value="{{savoir.system.niveau}}"
+                      data-dtype="Number"
+                    >
+                      {{#select savoir.system.niveau}} {{>
+                      systems/fvtt-wasteland/templates/partial-list-niveau.html}}
+                      {{/select}}
+                    </select>
+                    {{#each comp.attributs as |attr key|}}
+                    <input
+                      type="number"
+                      value="data.attributs.{{attr}}.value"
+                      class="rounded-input adr-before"
+                    />
+                    {{/each}} {{#if (ne savoir.system.attribut1 "none")}}
+                    <span class="item-field-label-short">
+                      <button
+                        class="rounded-input"
+                        data-attr-key="{{savoir.system.attribut1}}"
+                      >
+                        {{upper savoir.system.attribut1}} :
+                        {{savoir.system.attribut1total}}
+                      </button>
+                    </span>
+                    {{/if}} {{#if (ne savoir.system.attribut2 "none")}}
+                    <span class="item-field-label-short">
+                      <button
+                        class="rounded-input"
+                        data-attr-key="{{savoir.system.attribut2}}"
+                      >
+                        {{upper savoir.system.attribut2}} :
+                        {{savoir.system.attribut2total}}
+                      </button>
+                    </span>
+                    {{/if}} {{#if (ne savoir.system.attribut3 "none")}}
+                    <span class="item-field-label-short">
+                      <button
+                        class="rounded-input"
+                        data-attr-key="{{savoir.system.attribut3}}"
+                      >
+                        {{upper savoir.system.attribut3}} :
+                        {{savoir.system.attribut3total}}
+                      </button>
+                    </span>
+                    {{/if}}
+                  </div>
+                </div>
+                {{/each}}
+              </div>
             </div>
           </div>
         </div>

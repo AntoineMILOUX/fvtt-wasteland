@@ -188,6 +188,7 @@
     "types": [
       "arme",
       "competence",
+      "savoir",
       "protection",
       "pacte",
       "traitchaotique",
@@ -259,6 +260,17 @@
       ]
     },
     "skills": {
+      "niveau": 0,
+      "attribut1": "",
+      "attribut2": "",
+      "attribut3": "",
+      "doublebonus": false,
+      "predilections": [],
+      "templates": [
+        "base"
+      ]
+    },
+    "savoir": {
       "niveau": 0,
       "attribut1": "",
       "attribut2": "",

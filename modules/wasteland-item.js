@@ -2,6 +2,7 @@ import { WastelandUtility } from "./wasteland-utility.js";
 
 export const defaultItemImg = {
     competence: "systems/fvtt-wasteland/assets/icons/competence.webp",  
+    savoir: "systems/fvtt-wasteland/assets/icons/competence.webp",  
     arme: "systems/fvtt-wasteland/assets/icons/arme.webp",  
     capacite: "systems/fvtt-wasteland/assets/icons/capacite.webp",  
     don: "systems/fvtt-wasteland/assets/icons/don.webp",  
