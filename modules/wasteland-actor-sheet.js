@@ -85,6 +85,7 @@ export class WastelandActorSheet extends ActorSheet {
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
+      console.log(this,li)
       WastelandUtility.confirmDelete(this, li);
     })
     html.find('.edit-item-data').change(ev => {

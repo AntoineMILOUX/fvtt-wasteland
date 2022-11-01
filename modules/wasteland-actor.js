@@ -40,6 +40,7 @@ export class WastelandActor extends Actor {
     if (data.type == 'personnage') {
       const skills = await WastelandUtility.loadCompendium("fvtt-wasteland.skills")
       // n'ajouter que les skills de type "competence" et si name == "Wasteland", "Malroyaume", "Hier"
+      console.log("skills", skills)
       data.items = skills.map(i => i.toObject()).filter(i => i.type == "competence" || (i.name == "Wasteland" || i.name == "Malroyaume" || i.name == "Hier"))
     }
     if (data.type == 'pnj') {
@@ -132,8 +133,8 @@ export class WastelandActor extends Actor {
   getSkills() {
     let comp = []
     // boucle sur les compétences sauf Savoirs
+    console.log("this.items",this.items)
     for (let item of this.items) {
-      console.log("comp", item)
       item = duplicate(item)
       
       if (item.type == "competence") {

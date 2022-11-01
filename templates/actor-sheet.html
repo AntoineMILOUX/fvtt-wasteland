@@ -24,9 +24,11 @@
             <div class="separator">Eclat</div>
             <input
               type="number"
-              name="eclat-input"
               id=""
               class="rounded-input"
+              name="system.eclat.value"
+              value="{{data.eclat.value}}"
+
             />
           </div>
 
@@ -59,9 +61,10 @@
             <div class="separator">Expérience</div>
             <input
               type="number"
-              name="experience-input"
               id=""
               class="rounded-input"
+              name="system.experience.value"
+              value="{{data.eclat.value}}"
             />
           </div>
         </div>
@@ -193,6 +196,7 @@
                         {{skill.system.attribut3total}}
                       </button>
                     </span>
+                  
                     {{/if}}
                   </div>
                 </div>
@@ -204,7 +208,7 @@
               <div class="competences">
                 {{#each savoirs as |savoir key|}}
                 <div
-                  class="comp-row"
+                  class="comp-row item"
                   data-item-id="{{savoir._id}}"
                   data-item-type="competence"
                 >
@@ -257,7 +261,13 @@
                         {{savoir.system.attribut3total}}
                       </button>
                     </span>
+                  
                     {{/if}}
+                   
+                  </div>
+                  <div class="item-controls item-controls-fixed">
+                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
                   </div>
                 </div>
                 {{/each}}

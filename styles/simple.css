@@ -3,13 +3,14 @@
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  padding: 50px;
   color: var(--color-text-dark-primary);
   overflow-y: auto;
   overflow-x: hidden;
+  padding: 0;
 }
 .characterSheet{
   background: url('https://www.pixeden.com/media/k2/galleries/220/005-wood-melamine-subttle-pattern-background-pat.jpg') repeat;
+  padding: 50px;
 
 }
 .sheet{
@@ -78,11 +79,11 @@ button {
   padding: 10px 8px  !important;
   border-radius: 3px  !important;
 } */
-button{
+#main button{
   line-height: normal;
   font-size: 0.9em !important;
 }
-option, optgroup {
+#main option, optgroup {
   font-family: inherit;
   background: #1e1e1e;
 }
@@ -253,6 +254,9 @@ input[type="number"] {
 .input-comp{
   align-items: center;
   display: flex;
+}
+.input-comp:last-child{
+  float: right;
 }
 .comp-row{
   display: flex;
