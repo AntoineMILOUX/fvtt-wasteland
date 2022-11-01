@@ -40,6 +40,7 @@ export class WastelandActorSheet extends ActorSheet {
       effects: this.object.effects.map(e => foundry.utils.deepClone(e.data)),
       limited: this.object.limited,
       skills: this.actor.getSkills(),
+      savoirs : this.actor.getSavoirs(),
       armes: duplicate(this.actor.getWeapons()),
       protections: duplicate(this.actor.getArmors()),
       dons: duplicate(this.actor.getDons()),
@@ -84,6 +85,7 @@ export class WastelandActorSheet extends ActorSheet {
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
+      console.log(this,li)
       WastelandUtility.confirmDelete(this, li);
     })
     html.find('.edit-item-data').change(ev => {

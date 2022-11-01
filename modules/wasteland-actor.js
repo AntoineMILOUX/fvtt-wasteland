@@ -39,7 +39,9 @@ export class WastelandActor extends Actor {
 
     if (data.type == 'personnage') {
       const skills = await WastelandUtility.loadCompendium("fvtt-wasteland.skills")
-      data.items = skills.map(i => i.toObject())
+      // n'ajouter que les skills de type "competence" et si name == "Wasteland", "Malroyaume", "Hier"
+      console.log("skills", skills)
+      data.items = skills.map(i => i.toObject()).filter(i => i.type == "competence" || (i.name == "Wasteland" || i.name == "Malroyaume" || i.name == "Hier"))
     }
     if (data.type == 'pnj') {
     }
@@ -130,8 +132,11 @@ export class WastelandActor extends Actor {
   /* -------------------------------------------- */
   getSkills() {
     let comp = []
+    // boucle sur les compétences sauf Savoirs
+    console.log("this.items",this.items)
     for (let item of this.items) {
       item = duplicate(item)
+      
       if (item.type == "competence") {
         item.system.attribut1total = item.system.niveau + (this.system.attributs[item.system.attribut1]?.value || 0)
         item.system.attribut2total = item.system.niveau + (this.system.attributs[item.system.attribut2]?.value || 0)
@@ -159,7 +164,39 @@ export class WastelandActor extends Actor {
       return 0;
     })
   }
-
+  getSavoirs(){
+    let savoirs = [];
+    console.log('this', this)
+    for(let item of this.items){
+      console.log("itemsSavoirs", item.type)
+      if (item.type == "savoir") {
+        console.log("savoir32", item)
+        item.system.attribut1total = item.system.niveau + (this.system.attributs[item.system.attribut1]?.value || 0)
+        item.system.attribut2total = item.system.niveau + (this.system.attributs[item.system.attribut2]?.value || 0)
+        item.system.attribut3total = item.system.niveau + (this.system.attributs[item.system.attribut3]?.value || 0)
+        if (item.system.niveau == 0) {
+          item.system.attribut1total -= 3
+          item.system.attribut2total -= 3
+          item.system.attribut3total -= 3
+        }
+        item.system.attribut1label = this.system.attributs[item.system.attribut1]?.label || ""
+        item.system.attribut2label = this.system.attributs[item.system.attribut2]?.label || ""
+        item.system.attribut3label = this.system.attributs[item.system.attribut3]?.label || ""
+        savoirs.push(item)
+      }
+    }
+    return savoirs.sort(function (a, b) {
+      let fa = a.name.toLowerCase(),
+        fb = b.name.toLowerCase();
+      if (fa < fb) {
+        return -1;
+      }
+      if (fa > fb) {
+        return 1;
+      }
+      return 0;
+    })
+  }
   /* -------------------------------------------- */
   getAspect() {
     return (this.system.balance.loi > this.system.balance.chaos) ? this.system.balance.loi : this.system.balance.chaos    
