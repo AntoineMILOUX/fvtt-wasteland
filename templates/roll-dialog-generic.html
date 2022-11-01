@@ -1,83 +1,31 @@
 <form class="skill-roll-dialog">
-  <header class="roll-dialog-header">
-    {{#if img}}
-    <img class="actor-icon" src="{{img}}" data-edit="img" title="{{name}}" />
-    {{/if}}
-    <h1 class="dialog-roll-title roll-dialog-header">{{title}}</h1>
-  </header>
-
-  <div class="flexcol">
-
-    <div class="flexrow">
-      {{#if (eq attrKey "tochoose")}}
-        <span class="roll-dialog-label">Attribut</span>
-        <select class="status-small-label color-class-common" id ="attrKey" type="text" name="attrKey" value="attrKey" data-dtype="string" >
-          {{#select attrKey}}
-          {{#each attributs as |attrLabel attrKey|}}
-            <option value="{{attrKey}}">{{attrLabel}}</option>
-          {{/each}}
-          {{/select}}
-        </select>      
-      {{else}}
-        <span class="roll-dialog-label">{{attr.label}}</span>
-        <span class="small-label">{{attr.value}}</span>
-      {{/if}}
+  <div id="main-dialog-roll">
+    <div class="row">
+      <div class="flex">
+        <div class="separator">Bonus / Malus</div>
+        <select
+          class="roll-dialog-label rounded-input flex-center"
+          id="modificateur"
+          type="text"
+          name="modificateur"
+          value="{{modificateur}}"
+          data-dtype="Number"
+        >
+          {{#select modificateur}} {{{modificateursOptions}}} {{/select}}
+        </select>
+      </div>
     </div>
-
-    {{#if competence}}
-    <div class="flexrow">
-      <span class="roll-dialog-label">{{competence.name}}</span>
-      <span class="small-label">{{competence.system.niveau}}</span>
-    </div>
-    {{/if}}
-
-    {{#if rune}}
-    <div class="flexrow">
-      <span class="roll-dialog-label">{{rune.name}}</span>
-      <span class="small-label">{{rune.system.formule}}</span>
-    </div>
-    <div class="flexrow">
-      <span class="roll-dialog-label">Lancement</span>
-      <select class="roll-dialog-label" id="runemode" type="text" name="runemode" value="{{runemode}}"
-        data-dtype="String">
-        {{#select runemode}}
-        <option value="prononcer">Prononcer la rune</option>
-        <option value="inscrire">Inscrire la rune</option>
-        {{/select}}
-      </select>
-    </div>
-    <div class="flexrow">
-      <span class="roll-dialog-label">Points d'Ame</span>
-      <select class="roll-dialog-label" id="runeame" type="text" name="runeame" value="{{runeame}}"
-        data-dtype="Number">
-        {{#select runeame}}
-        {{{pointAmeOptions}}}
-        {{/select}}
-      </select>
-    </div>
-
-    {{/if}}
-
-    <div class="flexrow">
-      <span class="roll-dialog-label">Modificateur : </span>
-      <select class="roll-dialog-label" id="modificateur" type="text" name="modificateur" value="{{modificateur}}"
-        data-dtype="Number">
-        {{#select modificateur}}
-        {{{modificateursOptions}}}
-        {{/select}}
-      </select>
-    </div>
-
-    {{#if armeDefense}}
-    <div class="flexrow">
-      <span class="roll-dialog-label">Défense adversaire : </span>
-      <span class="roll-dialog-label"><strong>{{difficulte}}</strong> </span>
-    </div>
-    {{else}}
-      <div class="flexrow">
-        <span class="roll-dialog-label">Difficulté : </span>
-        <select class="roll-dialog-label" id="difficulte" type="text" name="difficulte" value="{{difficulte}}"
-          data-dtype="Number">
+    <div class="row">
+      <div class="flex">
+        <div class="separator">Difficulté</div>
+        <select
+          class="roll-dialog-label rounded-input flex-center"
+          id="difficulte"
+          type="text"
+          name="difficulte"
+          value="{{difficulte}}"
+          data-dtype="Number"
+        >
           {{#select difficulte}}
           <option value="0">Aucune/Inconnue</option>
           <option value="5">Facile (5)</option>
@@ -89,16 +37,33 @@
           {{/select}}
         </select>
       </div>
-    {{/if}}
-
-    {{#if canEclatDoubleD20}}
-    <div class="flexrow">
-      <span class="roll-dialog-label">Doubler le d20 (1 Point d'Eclat)</span>
-      <input class="" id="doubleD20" type="checkbox" name="doubleD20" value="{{doubleD20}}" {{checked doubleD20}}/>
     </div>
-    {{/if}}
+    <div class="row">
+      <div class="flex">
+        <div class="separator">Lancer</div>
+       <div class="flex-row">
+          <button
+            class="roll-dialog-label rounded-input flex-center"
+            id="d10"
+            name="roll"
+            value="roll"
+            data-dtype="String"
+          >
+        <img src="systems/fvtt-wasteland/assets/icons/d10.png" alt="">
+        </button>
+        <button
+        class="roll-dialog-label rounded-input flex-center"
+        id="d20"
+        name="roll"
+        value="roll"
+        data-dtype="String"
+      >
+    <img src="systems/fvtt-wasteland/assets/icons/d20.png" alt="">
+    </button>
+        </div>
+       </div>
 
-
+      </div>
+    </div>
   </div>
-
 </form>
