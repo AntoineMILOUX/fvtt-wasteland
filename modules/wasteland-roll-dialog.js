@@ -17,21 +17,22 @@ export class WastelandRollDialog extends Dialog {
       title: "Test de Capacité",
       content: html,
       buttons: { 
-        rolld10: {
-            icon: '<i class="fas fa-check"></i>',
-            label: "Lancer 1d10",
-            callback: () => { this.roll("1d10") } 
-          },
-          rolld20: {
-            icon: '<i class="fas fa-check"></i>',
-            label: "Lancer 1d20",
-            callback: () => { this.roll("1d20") } 
-          },
-          cancel: {
-            icon: '<i class="fas fa-times"></i>',
-            label: "Annuler",
-            callback: () => { this.close() }
-        } },
+        // rolld10: {
+        //     icon: '<i class="fas fa-check"></i>',
+        //     label: "Lancer 1d10",
+        //     callback: () => { this.roll("1d10") } 
+        //   },
+        //   rolld20: {
+        //     icon: '<i class="fas fa-check"></i>',
+        //     label: "Lancer 1d20",
+        //     callback: () => { this.roll("1d20") } 
+        //   },
+        //   cancel: {
+        //     icon: '<i class="fas fa-times"></i>',
+        //     label: "Annuler",
+        //     callback: () => { this.close() }
+        // }
+       },
       close: close
     }
 
@@ -74,6 +75,12 @@ export class WastelandRollDialog extends Dialog {
     })    
     html.find('#doubleD20').change(async (event) =>  {
       this.rollData.doubleD20 = event.currentTarget.checked
-    })         
+    })  
+    html.find('#d10').click((event) =>  {
+      this.roll("1d10")
+    });  
+    html.find('#d20').click((event) =>  {
+      this.roll("1d20")
+    });      
   }
 }
