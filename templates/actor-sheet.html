@@ -142,14 +142,14 @@
               <div class="competences">
                 {{#each skills as |skill key|}}
                 <div
-                  class="comp-row"
+                  class="comp-row item"
                   data-item-id="{{skill._id}}"
                   data-item-type="competence"
                 >
                   <p class="comp-label">{{skill.name}}</p>
                   <div class="input-comp">
                     <select
-                      class="rounded-input"
+                      class="rounded-input edit-item-data"
                       type="text"
                       data-item-field="niveau"
                       value="{{skill.system.niveau}}"
@@ -214,7 +214,7 @@
                   <p class="comp-label">{{savoir.name}}</p>
                   <div class="input-comp">
                     <select
-                      class="rounded-input"
+                      class="rounded-input edit-item-data"
                       type="text"
                       data-item-field="niveau"
                       value="{{savoir.system.niveau}}"
