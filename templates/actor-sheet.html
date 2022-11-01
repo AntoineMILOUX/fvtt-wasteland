@@ -71,70 +71,21 @@
         <div class="second-row">
           <div class="separator">Attributs</div>
           <div class="attributs">
+            {{#each data.attributs as |attr key|}}
             <div class="attribut">
-              <div class="label">Adresse</div>
-              <div class="input-adresse">
+              <div class="label">{{attr.label}}</div>
+              <div>
                 <input
                   type="number"
-                  name="system.attributs.adr.value"
+                  name="system.attributs.{{key}}.value"
                   id=""
                   class="circle-input"
-                  value="{{data.attributs.adr.value}}"
+                  value="{{attr.value}}"
                 />
               </div>
             </div>
-
-            <div class="attribut">
-              <div class="label">Puissance</div>
-              <div class="input-puissance">
-                <input
-                  type="number"
-                  name="system.attributs.pui.value"
-                  id=""
-                  class="circle-input"
-                  value="{{data.attributs.pui.value}}"
-                />
-              </div>
-            </div>
-
-            <div class="attribut">
-              <div class="label">Clairvoyance</div>
-              <div class="input-clairvoyance">
-                <input
-                  type="number"
-                  id=""
-                  class="circle-input"
-                  name="system.attributs.clair.value"
-                  value="{{data.attributs.cla.value}}"
-                />
-              </div>
-            </div>
-
-            <div class="attribut">
-              <div class="label">Présence</div>
-              <div class="input-presence">
-                <input
-                  type="number"
-                  id=""
-                  class="circle-input"
-                  name="system.attributs.pre.value"
-                  value="{{data.attributs.pre.value}}"
-                />
-              </div>
-            </div>
-
-            <div class="attribut">
-              <div class="label">Trempe</div>
-              <div class="input-trempe">
-                <input
-                  type="number"
-                  id=""
-                  class="circle-input"
-                  name="system.attributs.tre.value"
-                  value="{{data.attributs.tre.value}}"
-                />
-              </div>
-            </div>
+            {{/each}}
+            
           </div>
           <div class="third-row mt-20">
             <div class="first-col">
