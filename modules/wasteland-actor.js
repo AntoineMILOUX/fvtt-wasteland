@@ -92,6 +92,8 @@ export class WastelandActor extends Actor {
     let armes = []
     for (let arme of this.items) {
       if (arme.type == "arme") {
+      console.log('arme', arme)
+
         armes.push(this.prepareArme(arme))
       }
       if (arme.type == "bouclier") {

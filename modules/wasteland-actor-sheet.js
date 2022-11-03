@@ -17,7 +17,7 @@ export class WastelandActorSheet extends ActorSheet {
       template: "systems/fvtt-wasteland/templates/actor-sheet.html",
       width: 640,
       height: 720,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "stats" }],
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "competences" }],
       dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],
       editScore: false
     });

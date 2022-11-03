@@ -310,7 +310,7 @@ export class WastelandUtility {
     }
     //console.log("BEFORE COMP", rollData)
     if (rollData.competence) {
-      rollData.predilections = duplicate(rollData.competence.system.predilections.filter(pred => !pred.used) || [])
+      rollData.predilections = duplicate(rollData.competence.system.predilections?.filter(pred => !pred.used) || [])
       let compmod = (rollData.competence.system.niveau == 0) ? -3 : 0
       rollData.diceFormula += `+${rollData.attr.value}+${rollData.competence.system.niveau}+${rollData.modificateur}+${compmod}`
     } else {

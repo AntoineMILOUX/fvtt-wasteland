@@ -2,6 +2,7 @@
   <div id="main">
     <div class="container">
       {{!-- Sheet Header --}}
+
       <header class="header-fields">
         <!-- {{!-- Sheet Tab Navigation --}}
         <div id="tabs-bar" class="row flex-between   pl-0 pr-0">
@@ -28,7 +29,6 @@
               class="rounded-input"
               name="system.eclat.value"
               value="{{data.eclat.value}}"
-
             />
           </div>
 
@@ -67,27 +67,43 @@
             />
           </div>
         </div>
+      </header>
 
-        <div class="second-row">
-          <div class="separator">Attributs</div>
-          <div class="attributs">
-            {{#each data.attributs as |attr key|}}
-            <div class="attribut">
-              <div class="label">{{attr.label}}</div>
-              <div>
-                <input
-                  type="number"
-                  name="system.attributs.{{key}}.value"
-                  id=""
-                  class="circle-input"
-                  value="{{attr.value}}"
-                />
-              </div>
+      <div class="second-row">
+        <div class="separator">Attributs</div>
+        <div class="attributs">
+          {{#each data.attributs as |attr key|}}
+          <div class="attribut">
+            <div class="label">{{attr.label}}</div>
+            <div>
+              <input
+                type="number"
+                name="system.attributs.{{key}}.value"
+                id=""
+                class="circle-input"
+                value="{{attr.value}}"
+              />
             </div>
-            {{/each}}
-            
           </div>
-          <div class="third-row mt-20">
+          {{/each}}
+        </div>
+        {{!-- Sheet Tab Navigation --}}
+        <nav
+          class="sheet-tabs tabs"
+          style="width: 100%; margin-top: 20px"
+          data-group="primary"
+        >
+          <a class="item" data-tab="competences">Compétences</a>
+          <a class="item" data-tab="combat">Combat</a>
+          <a class="item" data-tab="equipement">Equipement</a>
+          <a class="item" data-tab="biodata">Bio&Notes</a>
+        </nav>
+        <div class="sheet-body third-row">
+          <div
+            class="third-row mt-20 tab competences"
+            data-group="primary"
+            data-tab="competences"
+          >
             <div class="first-col">
               <div class="separator">Compétences</div>
               <div class="competences">
@@ -146,7 +162,7 @@
                         {{skill.system.attribut3total}}
                       </button>
                     </span>
-                  
+
                     {{/if}}
                   </div>
                 </div>
@@ -211,22 +227,139 @@
                         {{savoir.system.attribut3total}}
                       </button>
                     </span>
-                  
+
                     {{/if}}
-                   
                   </div>
                   <div class="item-controls item-controls-fixed">
-                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                    <a class="item-control item-edit" title="Edit Item"
+                      ><i class="fas fa-edit"></i
+                    ></a>
+                    <a class="item-control item-delete" title="Delete Item"
+                      ><i class="fas fa-trash"></i
+                    ></a>
                   </div>
                 </div>
                 {{/each}}
               </div>
             </div>
           </div>
+          <div
+            class="third-row mt-20 tab combat"
+            data-group="primary"
+            data-tab="combat"
+          >
+            <div class="first-col">
+              <div class="separator">Combat</div>
+              <div class="row">
+                <div class="bloc">
+                  <span>Initiative</span>
+                  <input
+                    type="text"
+                    class="rounded-input"
+                    value="{{combat.initTotal}}"
+                    data-dtype="Number"
+                    data-item-field="initiative"
+                    disabled
+                  />
+                </div>
+                <div class="bloc">
+                  <span>Bonus D</span>
+                  <input
+                    type="text"
+                    class="rounded-input"
+                    value="{{combat.bonusDegatsTotal}}"
+                    data-dtype="Number"
+                    disabled
+                    data-item-field="initiative"
+                  />
+                </div>
+                <div class="bloc">
+                  <span>Vitesse</span>
+                  <input
+                    type="text"
+                    class="rounded-input"
+                    value="{{combat.vitesseTotal}}"
+                    data-dtype="Number"
+                    disabled
+                    data-item-field="initiative"
+                  />
+                </div>
+                <div class="bloc">
+                  <span>Défense</span>
+                  <input
+                    type="text"
+                    class="rounded-input"
+                    value="{{combat.defenseTotal}}"
+                    data-dtype="Number"
+                    disabled
+                    data-item-field="initiative"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <table class="table">
+                  <tr class="thead">
+                    <th>Arme de mêlée</th>
+                    <th>BM</th>
+                    <th>Cap.Off</th>
+                    <th>Def</th>
+                    <th>D</th>
+                    <th>Actions</th>
+                  </tr>
+                  {{#each armes as |arme key|}}
+                  <tr
+                    class="tbody item"
+                    data-item-id="{{arme._id}}"
+                    data-item-type="arme"
+                  >
+                    <td class="flex">{{arme.name}}</td>
+                    <td>
+                      {{arme.system.bonusmaniementoff }} /
+                      {{arme.system.bonusmaniementdef}}
+                    </td>
+                    <td>
+                      {{#if arme.system.equipped}}
+                      <button class="roll-arme-offensif button-sheet-roll" >{{arme.system.totalOffensif}}</button>
+                      {{else}}
+                      <button disabled class="roll-arme-offensif button-sheet-roll" >{{arme.system.totalOffensif}}</button>
+                      {{/if}}
+                    </td>
+                    <td>
+                      {{#if arme.system.isdefense}}
+                      <span class="item-field-label-short arme-defensif"><label class="arme-defensif">{{arme.system.totalDefensif}}</label></span>
+                      {{else}}
+                      <span class="item-field-label-short arme-defensif"><label class="arme-defensif">-</label></span>
+                      {{/if}}
+                    </td>
+                    <td>
+                      <span class="item-field-label-short">
+                        {{#if arme.system.equipped}}
+                        <button class="roll-arme-degats button-sheet-roll">{{arme.system.totalDegats}}</button>
+                        {{else}}
+                        <button disabled class="roll-arme-degats button-sheet-roll">{{arme.system.totalDegats}}</button>
+                        {{/if}}
+                      </span>  
+                    </td>
+                    <td>
+                      <div class="item-controls item-controls-fixed">
+                        <a class="item-control item-equip" title="Worn">{{#if arme.system.equipped}}<i
+                          class="fas fa-circle"></i>{{else}}<i class="fas fa-genderless"></i>{{/if}}</a>  
+                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  
+                  {{/each}}
+                </table>
+              </div>
+            </div>
+            <div class="second-col">
+              <div class="separator">Protection</div>
+            </div>
+          </div>
         </div>
-      </header>
+      </div>
     </div>
   </div>
 </form>
- 

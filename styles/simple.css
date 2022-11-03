@@ -6,7 +6,9 @@
   background-position: 100%;
   color: rgba(220,220,220,0.75);
 }
-
+#main .tab[data-tab].active {
+  display: flex;
+}
 /*  background: rgb(105,85,65) url("../images/ui/texture_feuille_perso_onglets.webp") no-repeat right bottom;*/
 
 #sidebar.collapsed {
@@ -195,6 +197,7 @@ body {
 }
 
 #main {
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
   margin: 0;
   display: flex;
   justify-content: center;
@@ -516,3 +519,46 @@ input[type="number"] {
 #main-dialog-roll img{
   border:none;
 }
+
+#main .tabs .item.active {
+  color:white;
+  background-color: #1e1e1e;
+  border: 1px solid #1e1e1e;
+  border-bottom: none;
+  border-radius: 3px;
+  text-shadow: none;
+}
+.sheet nav.sheet-tabs .item {
+  width: 100%;
+}
+a:hover {
+  background-color: #1e1e1e0f;
+  border-bottom: none;
+  border-radius: 3px;
+  text-shadow: none;
+}
+
+
+.combat .first-col{
+  width: 58.33%;
+}
+.combat .second-col{
+  width: 41.66%;
+}
+
+#main th, #main td{
+  padding:5px;
+  text-align: center;
+}
+#main .table th:first-child, #main .table td:first-child{
+  text-align: left;
+  width: 35%;
+}
+#main .table .thead {
+  background-color: #1e1e1e;
+  color: white;
+}
+#main .table .tbody {
+  background-color: #1e1e1e0f;
+}
+

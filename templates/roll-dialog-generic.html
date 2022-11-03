@@ -17,27 +17,40 @@
     </div>
     <div class="row">
       <div class="flex">
-        <div class="separator">Difficulté</div>
-        <select
-          class="roll-dialog-label rounded-input flex-center"
-          id="difficulte"
-          type="text"
-          name="difficulte"
-          value="{{difficulte}}"
-          data-dtype="Number"
-        >
-          {{#select difficulte}}
-          <option value="0">Aucune/Inconnue</option>
-          <option value="5">Facile (5)</option>
-          <option value="10">Moyenne (10)</option>
-          <option value="15">Ardue (15)</option>
-          <option value="20">Hasardeuse (20)</option>
-          <option value="25">Insensée (25)</option>
-          <option value="30">Pure Folie (30)</option>
-          {{/select}}
-        </select>
+        {{#if armeDefense}}
+          <div class="flexrow">
+            <span class="roll-dialog-label">Défense adversaire : </span>
+            <span class="roll-dialog-label"><strong>{{difficulte}}</strong> </span>
+          </div>
+        {{else}}
+          <div class="separator">Difficulté</div>
+          <select
+            class="roll-dialog-label rounded-input flex-center"
+            id="difficulte"
+            type="text"
+            name="difficulte"
+            value="{{difficulte}}"
+            data-dtype="Number"
+          >
+            {{#select difficulte}}
+            <option value="0">Aucune/Inconnue</option>
+            <option value="5">Facile (5)</option>
+            <option value="10">Moyenne (10)</option>
+            <option value="15">Ardue (15)</option>
+            <option value="20">Hasardeuse (20)</option>
+            <option value="25">Insensée (25)</option>
+            <option value="30">Pure Folie (30)</option>
+            {{/select}}
+          </select>
+        {{/if}}
       </div>
     </div>
+    {{#if canEclatDoubleD20}}
+    <div class="flexrow">
+      <span class="roll-dialog-label">Doubler le d20 (1 Point d'Eclat)</span>
+      <input class="" id="doubleD20" type="checkbox" name="doubleD20" value="{{doubleD20}}" {{checked doubleD20}}/>
+    </div>
+    {{/if}}
     <div class="row">
       <div class="flex">
         <div class="separator">Lancer</div>
