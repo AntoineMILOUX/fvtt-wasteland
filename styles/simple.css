@@ -556,9 +556,23 @@ a:hover {
   padding:5px;
   text-align: center;
 }
-#main .table th:first-child, #main .table td:first-child{
+#main .table-arme th:first-child, #main .table-arme td:first-child{
   text-align: left;
   width: 35%;
+}
+#main .table-protection th:first-child, #main .table-protection td:first-child{
+  text-align: left;
+  width: 50%;
+}
+#main .table-equipement th:first-child, #main .table-equipement td:first-child{
+  text-align: left;
+  width: 20%;
+}
+#main .table-equipement th:nth-child(2), #main .table-equipement td:nth-child(2){
+  text-align: left;
+}
+#main .table-arme th:last-child, #main .table-arme td:last-child, #main .table-protection th:last-child, #main .table-protection td:last-child{
+  text-align: right;
 }
 #main .table .thead {
   background-color: #1e1e1e;
@@ -568,3 +582,8 @@ a:hover {
   background-color: #1e1e1e0f;
 }
 
+.equipement{
+  flex-direction: column;
+  justify-content: flex-start;
+  gap:0;
+}

@@ -116,6 +116,7 @@ export class WastelandActor extends Actor {
   }
   /* -------------------------------------------- */
   getEquipments() {
+    console.log("getEquipments", this.items.filter(item => item.type == "equipement"))
     return this.items.filter(item => item.type == "equipement")
   }
   /* -------------------------------------------- */

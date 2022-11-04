@@ -297,9 +297,9 @@
                 </div>
               </div>
               <div class="row">
-                <table class="table">
+                <table class="table-arme table">
                   <tr class="thead">
-                    <th>Arme de mêlée</th>
+                    <th>Arme</th>
                     <th>BM</th>
                     <th>Cap.Off</th>
                     <th>Def</th>
@@ -319,43 +319,138 @@
                     </td>
                     <td>
                       {{#if arme.system.equipped}}
-                      <button class="roll-arme-offensif button-sheet-roll" >{{arme.system.totalOffensif}}</button>
+                      <button class="roll-arme-offensif button-sheet-roll">
+                        {{arme.system.totalOffensif}}
+                      </button>
                       {{else}}
-                      <button disabled class="roll-arme-offensif button-sheet-roll" >{{arme.system.totalOffensif}}</button>
+                      <button
+                        disabled
+                        class="roll-arme-offensif button-sheet-roll"
+                      >
+                        {{arme.system.totalOffensif}}
+                      </button>
                       {{/if}}
                     </td>
                     <td>
                       {{#if arme.system.isdefense}}
-                      <span class="item-field-label-short arme-defensif"><label class="arme-defensif">{{arme.system.totalDefensif}}</label></span>
+                      <span class="item-field-label-short arme-defensif"
+                        ><label class="arme-defensif"
+                          >{{arme.system.totalDefensif}}</label
+                        ></span
+                      >
                       {{else}}
-                      <span class="item-field-label-short arme-defensif"><label class="arme-defensif">-</label></span>
+                      <span class="item-field-label-short arme-defensif"
+                        ><label class="arme-defensif">-</label></span
+                      >
                       {{/if}}
                     </td>
                     <td>
                       <span class="item-field-label-short">
                         {{#if arme.system.equipped}}
-                        <button class="roll-arme-degats button-sheet-roll">{{arme.system.totalDegats}}</button>
+                        <button class="roll-arme-degats button-sheet-roll">
+                          {{arme.system.totalDegats}}
+                        </button>
                         {{else}}
-                        <button disabled class="roll-arme-degats button-sheet-roll">{{arme.system.totalDegats}}</button>
+                        <button
+                          disabled
+                          class="roll-arme-degats button-sheet-roll"
+                        >
+                          {{arme.system.totalDegats}}
+                        </button>
                         {{/if}}
-                      </span>  
+                      </span>
                     </td>
                     <td>
                       <div class="item-controls item-controls-fixed">
-                        <a class="item-control item-equip" title="Worn">{{#if arme.system.equipped}}<i
-                          class="fas fa-circle"></i>{{else}}<i class="fas fa-genderless"></i>{{/if}}</a>  
-                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                        <a class="item-control item-equip" title="Worn"
+                          >{{#if arme.system.equipped}}<i
+                            class="fas fa-circle"
+                          ></i
+                          >{{else}}<i class="fas fa-genderless"></i>{{/if}}</a
+                        >
+                        <a class="item-control item-edit" title="Edit Item"
+                          ><i class="fas fa-edit"></i
+                        ></a>
+                        <a class="item-control item-delete" title="Delete Item"
+                          ><i class="fas fa-trash"></i
+                        ></a>
                       </div>
                     </td>
                   </tr>
-                  
+
                   {{/each}}
                 </table>
               </div>
             </div>
             <div class="second-col">
               <div class="separator">Protection</div>
+              <div class="row">
+                <table class="table-protection table">
+                  <tr class="thead">
+                    <th>Protection</th>
+                    <th>Défense</th>
+                    <th>Actions</th>
+                  </tr>
+                  {{#each protections as |protection key|}}
+                  <tr
+                    class="tbody item"
+                    data-item-id="{{protection._id}}"
+                    data-item-type="protection"
+                  >
+                    <td class="flex">{{protection.name}}</td>
+                    <td>{{protection.system.protection}}</td>
+                    <td>
+                      <div class="item-controls item-controls-fixed">
+                        <a class="item-control item-edit" title="Edit Item"
+                          ><i class="fas fa-edit"></i
+                        ></a>
+                        <a class="item-control item-delete" title="Delete Item"
+                          ><i class="fas fa-trash"></i
+                        ></a>
+                      </div>
+                    </td>
+                  </tr>
+
+                  {{/each}}
+                </table>
+              </div>
+            </div>
+          </div>
+          <div
+            class="third-row mt-20 tab equipement"
+            data-group="primary"
+            data-tab="equipement"
+          >
+            <div class="separator mt-20">Equipement</div>
+            <div class="row">
+              <table class="table table-equipement">
+                <tr class="thead">
+                  <th>Equipement</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+                </tr>
+                {{#each equipements as |equipement key|}}
+                <tr
+                  class="tbody item"
+                  data-item-id="{{equipement._id}}"
+                  data-item-type="equipement"
+                >
+                  <td class="flex">{{equipement.name}}</td>
+                  <td>{{{ equipement.system.description }}}</td>
+                  <td>
+                    <div class="item-controls item-controls-fixed">
+                      <a class="item-control item-edit" title="Edit Item"
+                        ><i class="fas fa-edit"></i
+                      ></a>
+                      <a class="item-control item-delete" title="Delete Item"
+                        ><i class="fas fa-trash"></i
+                      ></a>
+                    </div>
+                  </td>
+                </tr>
+
+                {{/each}}
+              </table>
             </div>
           </div>
         </div>
