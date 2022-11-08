@@ -201,7 +201,7 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: 1200px;
   width: 940px;
   position: relative;
   top: 0;
@@ -240,11 +240,16 @@ button {
 } */
 #main button{
   line-height: normal;
+  white-space: nowrap;
   font-size: 0.9em !important;
 }
 #main option, optgroup {
   font-family: inherit;
   background: #1e1e1e;
+}
+.item-controls.item-controls-fixed {
+  position: absolute;
+  right: 0;
 }
 .bloc {
   display: flex;
@@ -423,6 +428,7 @@ input[type="number"] {
   gap: 50px;
   height:50px;
   align-items: center;
+  position: relative;
 }
 .comp-row:first-child{
   margin-top: 20px;
