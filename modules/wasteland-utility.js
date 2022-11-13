@@ -321,15 +321,7 @@ export class WastelandUtility {
       rollData.diceFormula += `+${rollData.arme.system.bonusmaniementoff}`
     }
 
-    if (rollData.rune) {
-      rollData.runeduree = Math.ceil((rollData.runeame + 3) / 3)
-      if (rollData.runemode == "inscrire") {
-        rollData.runeduree *= 2
-      }
-      if (rollData.runemode == "prononcer") {
-        rollData.runeduree = 1
-      }
-    }
+  
 
     let myRoll = new Roll(rollData.diceFormula).roll({ async: false })
     await this.showDiceSoNice(myRoll, game.settings.get("core", "rollMode"))
@@ -339,13 +331,7 @@ export class WastelandUtility {
     rollData.finalResult = myRoll.total
     this.computeResult(rollData)
 
-    if (rollData.rune) {
-      let subAme = rollData.runeame
-      if (rollData.isEchec && !rollData.isDramatique) {
-        subAme = Math.ceil((subAme + 1) / 2)
-      }
-      actor.subPointsAme(rollData.runemode, subAme)
-    }
+
 
     this.createChatWithRollMode(rollData.alias, {
       content: await renderTemplate(`systems/fvtt-wasteland/templates/chat-generic-result.html`, rollData)

@@ -11,7 +11,6 @@
 import { WastelandActor } from "./wasteland-actor.js";
 import { WastelandItemSheet } from "./wasteland-item-sheet.js";
 import { WastelandActorSheet } from "./wasteland-actor-sheet.js";
-//import { WastelandNPCSheet } from "./wasteland-npc-sheet.js";
 import { WastelandUtility } from "./wasteland-utility.js";
 import { WastelandCombat } from "./wasteland-combat.js";
 import { WastelandItem } from "./wasteland-item.js";
@@ -51,7 +50,7 @@ Hooks.once("init", async function () {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("fvtt-wasteland", WastelandActorSheet, { types: ["personnage"], makeDefault: true })
-  //Actors.registerSheet("fvtt-wasteland", WastelandNPCSheet, { types: ["npc"], makeDefault: false });
+  Actors.registerSheet("fvtt-wasteland", WastelandActorSheet, { types: ["npc"], makeDefault: false });
 
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("fvtt-wasteland", WastelandItemSheet, { makeDefault: true })

@@ -10,6 +10,7 @@ import { WastelandRollDialog } from "./wasteland-roll-dialog.js";
 export class WastelandActorSheet extends ActorSheet {
 
   /** @override */
+  // Mise en place des options par défaut de la fiche de personnage
   static get defaultOptions() {
 
     return mergeObject(super.defaultOptions, {
@@ -24,6 +25,7 @@ export class WastelandActorSheet extends ActorSheet {
   }
 
   /* -------------------------------------------- */
+  // assignement de toutes les données de la fiche de personnage
   async getData() {
     const objectData = duplicate(this.object)    
     let actorData = objectData 
@@ -43,12 +45,9 @@ export class WastelandActorSheet extends ActorSheet {
       savoirs : this.actor.getSavoirs(),
       armes: duplicate(this.actor.getWeapons()),
       protections: duplicate(this.actor.getArmors()),
-      dons: duplicate(this.actor.getDons()),
       alignement: this.actor.getAlignement(),
       aspect: this.actor.getAspect(),
       marge: this.actor.getMarge(),
-      tendances:duplicate(this.actor.getTendances()),
-      runes:duplicate(this.actor.getRunes()),
       origine: duplicate(this.actor.getOrigine() || {}),
       heritage: duplicate(this.actor.getHeritage() || {}),
       metier: duplicate(this.actor.getMetier()  || {}),
@@ -62,13 +61,13 @@ export class WastelandActorSheet extends ActorSheet {
     }
     this.formData = formData;
 
-    console.log("PC : ", formData, this.object);
     return formData;
   }
 
   
   /* -------------------------------------------- */
   /** @override */
+  // mise en place des écouteurs d'evenement exemple : clique sur le bouton supprimer -> execute le code de la suppression 
   activateListeners(html) {
     super.activateListeners(html);
 
@@ -118,11 +117,7 @@ export class WastelandActorSheet extends ActorSheet {
       let compId  = li.data("item-id")
       this.actor.rollCompetence(attrKey, compId)
     })
-    html.find('.roll-rune').click((event) => {
-      const li = $(event.currentTarget).parents(".item")
-      let runeId  = li.data("item-id")
-      this.actor.rollRune(runeId)
-    })
+   
     html.find('.roll-arme-offensif').click((event) => {
       const li = $(event.currentTarget).parents(".item")
       let armeId  = li.data("item-id")

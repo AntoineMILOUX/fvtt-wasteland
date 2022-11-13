@@ -107,7 +107,8 @@
     },
     "pnj": {
       "templates": [
-        "npccore"
+        "biodata",
+        "core"
       ]
     }
   },
@@ -127,24 +128,14 @@
       "monnaie",
       "don",
       "tendance",
-      "rune",
       "equipement",
       "capacite",
       "origine",
       "heritage",
       "metier",
-      "runeeffect",
       "bouclier"
     ],
-    "runeeffect": {
-      "rune": "",
-      "mode": "",
-      "duree": "",
-      "pointame": 0,
-      "templates": [
-        "base"
-      ]
-    },
+ 
     "origine": {
       "templates": [
         "base"
@@ -255,21 +246,6 @@
       "allegeance": "",
       "prerequis": "",
       "sacrifice": "",
-      "templates": [
-        "base"
-      ]
-    },
-    "tendance": {
-      "allegeance": "",
-      "templates": [
-        "base"
-      ]
-    },
-    "rune": {
-      "formule": "",
-      "seuil": 0,
-      "prononcee": "",
-      "tracee": "",
       "templates": [
         "base"
       ]

@@ -54,15 +54,7 @@
       "private": false,
       "flags": {}
     },
-    {
-      "label": "Dons",
-      "type": "Item",
-      "name": "dons",
-      "path": "packs/dons.db",
-      "system": "fvtt-wasteland",
-      "private": false,
-      "flags": {}
-    },
+   
     {
       "type": "Item",
       "label": "Origines",
@@ -90,15 +82,7 @@
       "private": false,
       "flags": {}
     },
-    {
-      "type": "Item",
-      "label": "Tendances",
-      "name": "tendances",
-      "path": "packs/tendances.db",
-      "system": "fvtt-wasteland",
-      "private": false,
-      "flags": {}
-    },
+
     {
       "type": "Item",
       "label": "Traits chaotiques",
@@ -108,15 +92,7 @@
       "private": false,
       "flags": {}
     },
-    {
-      "type": "Item",
-      "label": "Runes",
-      "name": "runes",
-      "path": "packs/runes.db",
-      "system": "fvtt-wasteland",
-      "private": false,
-      "flags": {}
-    },
+   
     {
       "type": "RollTable",
       "label": "Tables",

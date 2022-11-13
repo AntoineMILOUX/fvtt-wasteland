@@ -25,6 +25,10 @@ export class WastelandActor extends Actor {
    *
    */
 
+
+  /**
+   * Ce script sera executé à la création d'un personnage. 
+   */
   static async create(data, options) {
 
     // Case of compendium global import
@@ -49,7 +53,11 @@ export class WastelandActor extends Actor {
     return super.create(data, options);
   }
 
+
   /* -------------------------------------------- */
+  /**
+   * Cette partie va calculer les valeurs de combat du personnage et préparer les données des armes qu'il possède.
+  */
   prepareArme(arme) {
     arme = duplicate(arme)
     let combat = this.getCombatValues()
@@ -103,17 +111,8 @@ export class WastelandActor extends Actor {
     return armes
   }
 
-  /* -------------------------------------------- */
-  getDons() {
-    return this.items.filter(item => item.type == "don")
-  }
-  /* -------------------------------------------- */
-  getTendances() {
-    return this.items.filter(item => item.type == "tendance")
-  }
-  getRunes() {
-    return this.items.filter(item => item.type == "rune")
-  }
+ 
+
   /* -------------------------------------------- */
   getEquipments() {
     console.log("getEquipments", this.items.filter(item => item.type == "equipement"))
@@ -330,16 +329,7 @@ export class WastelandActor extends Actor {
     return (this.getAlignement() == "loyal" && this.system.eclat.value > 0)
   }
   /* -------------------------------------------- */
-  subPointsAme(runeMode, value) {
-    let ame = duplicate(this.system.ame)
-    if(runeMode == "prononcer") {
-      ame.value -= value
-    } else {
-      ame.currentmax -= value
-    }
-    this.update( {'system.ame': ame})
-  }
-
+ 
   /* -------------------------------------------- */
   compareName(a, b) {
     if (a.name < b.name) {
@@ -487,21 +477,7 @@ export class WastelandActor extends Actor {
   }
 
   /* -------------------------------------------- */
-  async rollRune(runeId) {    
-    let comp = this.items.find(comp => comp.type == "competence" && comp.name.toLowerCase() == "savoir : runes")
-    if ( !comp) {
-      ui.notifications.warn("La compétence Savoirs : Runes n'a pas été trouvée, abandon.")
-      return
-    }
-    let rollData = this.getCommonRollData("cla", undefined, "Savoir : Runes")
-    rollData.rune =  duplicate(this.items.get(runeId) || {})
-    rollData.difficulte = rollData.rune?.system?.seuil || 0
-    rollData.runemode = "prononcer"
-    rollData.runeame  = 1
-    console.log("runeData", rollData)
-    let rollDialog = await WastelandRollDialog.create(this, rollData)
-    rollDialog.render(true)
-  }
+
   
   /* -------------------------------------------- */
   async rollArmeOffensif(armeId) {

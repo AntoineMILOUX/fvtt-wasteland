@@ -11,8 +11,6 @@ export const defaultItemImg = {
     pacte: "systems/fvtt-wasteland/assets/icons/pacte.webp",  
     predilection: "systems/fvtt-wasteland/assets/icons/predilection.webp",  
     protection: "systems/fvtt-wasteland/assets/icons/protection.webp",  
-    rune: "systems/fvtt-wasteland/assets/icons/rune.webp",  
-    tendance: "systems/fvtt-wasteland/assets/icons/tendance.webp",  
     traitchaotique: "systems/fvtt-wasteland/assets/icons/traitchaotique.webp",  
 }
 

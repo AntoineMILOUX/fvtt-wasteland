@@ -67,12 +67,8 @@ export class WastelandRollDialog extends Dialog {
     html.find('#attrKey').change(async (event) =>  {
       this.rollData.attrKey = String(event.currentTarget.value)
     })    
-    html.find('#runemode').change(async (event) =>  {
-      this.rollData.runemode = String(event.currentTarget.value)
-    })    
-    html.find('#runeame').change(async (event) =>  {
-      this.rollData.runeame = Number(event.currentTarget.value)
-    })    
+     
+   
     html.find('#doubleD20').change(async (event) =>  {
       this.rollData.doubleD20 = event.currentTarget.checked
     })  

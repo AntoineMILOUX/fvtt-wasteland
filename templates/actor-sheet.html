@@ -1,27 +1,19 @@
 <form class="{{cssClass}} characterSheet" autocomplete="off">
+  <div class="item-img">
+    <div class="paperClip" alt="">
+    </div>
+    <div class="polaroid"><img src="{{img}}" data-edit="img" title="{{name}}" style="background-image: url({{img}});" class="img profile-img"/>
+      <input id="input-name" class="caption" name="name" type="text" value="{{name}}" placeholder="Name" />
+    </div>
+  </div>
   <div id="main">
+ 
     <div class="container">
+      
       {{!-- Sheet Header --}}
-
       <header class="header-fields">
-        <!-- {{!-- Sheet Tab Navigation --}}
-        <div id="tabs-bar" class="row flex-between   pl-0 pr-0">
-          <div class="tab">
-            <button href="index.html">Caractéristiques</button>
-          </div>
-          <div class="tab flex-">
-            <button href="Combat.html">Combat</button>
-          </div>
-          <div class="tab flex-">
-            <button href="Inventaire.html">Inventaire</button>
-          </div>
-          <div class="tab flex-">
-            <button href="Description.html">Description</button>
-          </div>
-        </div> -->
-
-        <div class="row">
-          <div class="bloc">
+        <div class="row ml-20">
+          <div class="bloc eclat">
             <div class="separator">Eclat</div>
             <input
               type="number"
@@ -56,7 +48,7 @@
             </div>
           </div>
 
-          <div class="bloc">
+          <div class="bloc experience">
             <div class="separator">Expérience</div>
             <input
               type="number"
@@ -70,6 +62,7 @@
       </header>
 
       <div class="second-row">
+        <div class="w-80 ml-20">
         <div class="separator">Attributs</div>
         <div class="attributs">
           {{#each data.attributs as |attr key|}}
@@ -87,6 +80,7 @@
           </div>
           {{/each}}
         </div>
+      </div>
         {{!-- Sheet Tab Navigation --}}
         <nav
           class="sheet-tabs tabs"
@@ -108,7 +102,7 @@
             <div class="first-col">
               <div class="separator">Compétences</div>
               <div class="competences">
-                {{#each skills as |skill key|}}
+                {{#each skills as |skill key|}} 
                 <div
                   class="comp-row item"
                   data-item-id="{{skill._id}}"
