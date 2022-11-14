@@ -52,8 +52,8 @@
 .item-img {
   z-index: 1;
   position: absolute;
-  top: -0;
-  left: 10px;
+  top: -2px;
+  left: 40px;
   width: 265px;
   display: inline-block;
   margin-top: 2rem;

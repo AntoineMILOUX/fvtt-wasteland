@@ -1,84 +1,25 @@
-<form class="{{cssClass}}" autocomplete="off">
-    <header class="sheet-header">
-        <img class="item-sheet-img" src="{{img}}" data-edit="img" title="{{name}}"/>
-        <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
-        </div>
-    </header>
-
-    {{!-- Sheet Body --}}
-    <section class="sheet-body">
-    
-    <div class="flexcol">
-      <span class="flexrow">
-        <label class="generic-label">Type d'arme : </label>
-        <select class="status-small-label color-class-common" type="text" name="system.typearme" value="{{data.typearme}}" data-dtype="string" >
-          {{#select data.typearme}}
-          <option value="contact">Arme de contact</option>
-          <option value="contactjet">Arme de contact et de Jet</option>
-          <option value="jet">Arme de Jet</option>
-          <option value="tir">Arme de Tir</option>
-          {{/select}}
-        </select> 
-      </span>
-      <span class="flexrow">
-        <label class="generic-label">Bonus de maniement (offensif) : </label>
-        <input type="text" class="padd-right status-small-label color-class-common" name="system.bonusmaniementoff" value="{{data.bonusmaniementoff}}" data-dtype="Number" />
-      </span>
-      <span class="flexrow">
-        <label class="generic-label">Défensive ? </label>
-        <input type="checkbox" name="system.isdefense" {{checked data.isdefense}}/>
-      </span>
-      {{#if data.isdefense}}
-      <span class="flexrow">
-        <label class="generic-label">Bonus de maniement (défensif) : </label>
-        <input type="text" class="padd-right status-small-label color-class-common" name="system.bonusmaniementdef" value="{{data.bonusmaniementdef}}" data-dtype="Number" />
-      </span>
-      {{/if}}
-      <span class="flexrow">
-        <label class="generic-label">Dégâts : </label>
-        <input type="text" class="padd-right status-small-label color-class-common" name="system.degats" value="{{data.degats}}" data-dtype="String" />
-      </span>
-      <span class="flexrow">
-        <label class="generic-label">Dégâts non létaux ? </label>
-        <input type="checkbox" name="system.nonletaux" {{checked data.nonletaux}}/>
-      </span>
-      <span class="flexrow">
-        <label class="generic-label">Equipé ? </label>
-        <input type="checkbox" name="system.equipped" {{checked data.equipped}}/>
-      </span>
-      <span class="flexrow">
-        <label class="generic-label">A deux mains ? </label>
-        <input type="checkbox" name="system.deuxmains" {{checked data.deuxmains}}/>
-      </span>
-      <span class="flexrow">
-        <label class="generic-label">Portée courte </label>
-        <input type="text" class="padd-right status-small-label color-class-common" name="system.courte" value="{{data.courte}}" data-dtype="Number" />
-      </span>
-      <span class="flexrow">
-        <label class="generic-label">Portée moyenne </label>
-        <input type="text" class="padd-right status-small-label color-class-common" name="system.moyenne" value="{{data.moyenne}}" data-dtype="Number" />
-      </span>
-      <span class="flexrow">
-        <label class="generic-label">Portée longue </label>
-        <input type="text" class="padd-right status-small-label color-class-common" name="system.longue" value="{{data.longue}}" data-dtype="Number" />
-      </span>
-      <span class="flexrow">
-        <label class="generic-label">Temps de rechargement  </label>
-        <input type="text" class="padd-right status-small-label color-class-common" name="system.tr" value="{{data.tr}}" data-dtype="Number" />
-      </span>
-      <span class="flexrow">
-        <label class="generic-label">Rareté  </label>
-        <input type="text" class="padd-right status-small-label color-class-common" name="system.rarete" value="{{data.rarete}}" data-dtype="Number" />
-      </span>
-      <span class="flexrow">
-        <label class="generic-label">Prix  </label>
-        <input type="text" class="padd-right status-small-label color-class-common" name="system.prix" value="{{data.prix}}" data-dtype="Number" />
-      </span>
-
-      {{> systems/fvtt-wasteland/templates/partial-item-description.html}}
-
+<form class="{{cssClass}} characterSheet" autocomplete="off" >
+  <div class="item-img">
+    <div class="paperClip" alt=""></div>
+    <div class="polaroid">
+      <img
+        src="{{img}}"
+        data-edit="img"
+        title="{{name}}"
+        style="background-image: url({{img}});"
+        class="img profile-img"
+      />
+      <input
+        id="input-name"
+        class="caption"
+        name="name"
+        type="text"
+        value="{{name}}"
+        placeholder="Name"
+      />
     </div>
-      
-    </section>
+  </div>
+  <div id="main">
+    <div class="container"></div>
+  </div>
 </form>
