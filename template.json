@@ -71,7 +71,8 @@
           "bonus": 0,
           "nonletaux": 0,
           "letaux": 0,
-          "sequelles": ""
+          "sequelles": "",
+          "percent": 0 
         },
         "ame": {
           "fullmax": 0,

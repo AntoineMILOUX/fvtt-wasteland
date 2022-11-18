@@ -67,6 +67,13 @@ export class WastelandRollDialog extends Dialog {
     html.find('#attrKey').change(async (event) =>  {
       this.rollData.attrKey = String(event.currentTarget.value)
     })    
+    html.find('#health').change(async (event) =>  {
+      //set percent progress on health bar
+      let newPercent = Math.round(100 * Number(this.actor.sante.letaux) / Number(this.actor.sante.base))
+
+        console.log('newPercent', newPercent)
+        this.actor.update({ "data.sante.percent":  newPercent})
+    })
      
    
     html.find('#doubleD20').change(async (event) =>  {

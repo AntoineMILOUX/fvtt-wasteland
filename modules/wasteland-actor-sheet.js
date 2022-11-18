@@ -53,6 +53,7 @@ export class WastelandActorSheet extends ActorSheet {
       metier: duplicate(this.actor.getMetier()  || {}),
       combat: this.actor.getCombatValues(),      
       equipements: duplicate(this.actor.getEquipments()),
+      percentHealth : duplicate(this.actor.getHealthPercent()),
       description: await TextEditor.enrichHTML(this.object.system.biodata.description, {async: true}),
       options: this.options,
       owner: this.document.isOwner,
@@ -96,7 +97,7 @@ export class WastelandActorSheet extends ActorSheet {
       let value = ev.currentTarget.value
       this.actor.editItemField(itemId, itemType, itemField, dataType, value)
     })
-    
+
     html.find('.quantity-minus').click(event => {
       const li = $(event.currentTarget).parents(".item");
       this.actor.incDecQuantity( li.data("item-id"), -1 );

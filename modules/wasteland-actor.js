@@ -111,7 +111,15 @@ export class WastelandActor extends Actor {
     return armes
   }
 
- 
+  getHealthPercent(){
+    let newPercent = Math.round((this.system.sante.letaux / this.system.sante.base) * 100) 
+    if(newPercent > 100){
+      newPercent = 100
+    }else if(newPercent < 0){
+      newPercent = 0
+    };
+    return newPercent;
+  }
 
   /* -------------------------------------------- */
   getEquipments() {
@@ -249,8 +257,9 @@ export class WastelandActor extends Actor {
 
     if (this.type == 'personnage') {
       let newSante = this.system.sante.bonus + (this.system.attributs.pui.value + this.system.attributs.tre.value) * 2 + 5
+      
       if (this.system.sante.base != newSante) {
-        this.update({ 'system.sante.base': newSante })
+        this.update({ 'system.sante.base': newSante})
       }
       let newAme = (this.system.attributs.cla.value + this.system.attributs.tre.value) * this.system.biodata.amemultiplier + 5
       if (this.system.ame.fullmax != newAme) {

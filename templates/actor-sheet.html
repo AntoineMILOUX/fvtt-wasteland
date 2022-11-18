@@ -1,17 +1,83 @@
 <form class="{{cssClass}} characterSheet" autocomplete="off">
   <div class="item-img">
-    <div class="paperClip" alt="">
-    </div>
-    <div class="polaroid"><img src="{{img}}" data-edit="img" title="{{name}}" style="background-image: url({{img}});" class="img profile-img"/>
-      <input id="input-name" class="caption" name="name" type="text" value="{{name}}" placeholder="Name" />
+    <div class="paperClip" alt=""></div>
+    <div class="polaroid">
+      <img
+        src="{{img}}"
+        data-edit="img"
+        title="{{name}}"
+        style="background-image: url({{img}});"
+        class="img profile-img"
+      />
+      <input
+        id="input-name"
+        class="caption"
+        name="name"
+        type="text"
+        value="{{name}}"
+        placeholder="Name"
+      />
     </div>
   </div>
   <div id="main">
- 
     <div class="container">
-      
       {{!-- Sheet Header --}}
       <header class="header-fields">
+        <div class="row ml-20">
+          <div class="bloc">
+            <div class="separator">Santé létal</div>
+            <div class="health-bar">
+              <div
+                class="health-bar-fill"
+                style="width: {{percentHealth}}%"
+              ></div>
+              <div class="input-progress-bloc">
+                <input
+                  id="health"
+                  class="input-progress"
+                  type="number"
+                  value="{{data.sante.letaux }}"
+                  name="system.sante.letaux"
+                />
+                /
+                <input
+                  class="input-progress"
+                  type="number"
+                  value="{{data.sante.base }}"
+                  name="system.sante.base"
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
+          <div class="bloc">
+            <div class="separator">Santé non létal</div>
+            <div class="health-bar">
+              <div
+                class="health-bar-fill"
+                style="width: {{percentHealth}}%"
+              ></div>
+              <div class="input-progress-bloc">
+                <input
+                  id="health"
+                  class="input-progress"
+                  type="number"
+                  value="{{data.sante.letaux }}"
+                  name="system.sante.letaux"
+                />
+                /
+                <input
+                  class="input-progress"
+                  type="number"
+                  value="{{data.sante.base }}"
+                  name="system.sante.base"
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="row ml-20">
           <div class="bloc eclat">
             <div class="separator">Eclat</div>
@@ -63,24 +129,24 @@
 
       <div class="second-row">
         <div class="w-80 ml-20">
-        <div class="separator">Attributs</div>
-        <div class="attributs">
-          {{#each data.attributs as |attr key|}}
-          <div class="attribut">
-            <div class="label">{{attr.label}}</div>
-            <div>
-              <input
-                type="number"
-                name="system.attributs.{{key}}.value"
-                id=""
-                class="circle-input"
-                value="{{attr.value}}"
-              />
+          <div class="separator">Attributs</div>
+          <div class="attributs">
+            {{#each data.attributs as |attr key|}}
+            <div class="attribut">
+              <div class="label">{{attr.label}}</div>
+              <div>
+                <input
+                  type="number"
+                  name="system.attributs.{{key}}.value"
+                  id=""
+                  class="circle-input"
+                  value="{{attr.value}}"
+                />
+              </div>
             </div>
+            {{/each}}
           </div>
-          {{/each}}
         </div>
-      </div>
         {{!-- Sheet Tab Navigation --}}
         <nav
           class="sheet-tabs tabs"
@@ -93,161 +159,175 @@
           <a class="item" data-tab="biodata">Bio&Notes</a>
           <a class="item" data-tab="autres">Autres...</a>
         </nav>
-        <div class="sheet-body third-row">
+        <div class="sheet-body row-column">
           <div
-            class="third-row mt-20 tab competences"
+            class="row mt-20 tab competences"
             data-group="primary"
             data-tab="competences"
           >
-            <div class="first-col">
-              <div class="separator">Compétences</div>
-              <div class="competences">
-                {{#each skills as |skill key|}} 
-                <div
-                  class="comp-row item"
-                  data-item-id="{{skill._id}}"
-                  data-item-type="competence"
-                >
-                  <p class="comp-label">{{skill.name}}</p>
-                  <div class="input-comp">
-                    <select
-                      class="rounded-input edit-item-data"
-                      type="text"
-                      data-item-field="niveau"
-                      value="{{skill.system.niveau}}"
-                      data-dtype="Number"
+            <div class="row-column">
+              <div class="row-flex">
+                <div class="first-col">
+                  <div class="separator">Compétences</div>
+                  <div class="competences">
+                    {{#each skills as |skill key|}}
+                    <div
+                      class="comp-row item"
+                      data-item-id="{{skill._id}}"
+                      data-item-type="competence"
                     >
-                      {{#select skill.system.niveau}} {{>
-                      systems/fvtt-wasteland/templates/partial-list-niveau.html}}
-                      {{/select}}
-                    </select>
-                    {{#each comp.attributs as |attr key|}}
-                    <input
-                      type="number"
-                      value="data.attributs.{{attr}}.value"
-                      class="rounded-input adr-before"
-                    />
-                    {{/each}} {{#if (ne skill.system.attribut1 "none")}}
-                    <span class="item-field-label-short">
-                      <button
-                        class="rounded-input roll-competence"
-                        data-attr-key="{{skill.system.attribut1}}"
-                      >
-                        {{upper skill.system.attribut1}} :
-                        {{skill.system.attribut1total}}
-                      </button>
-                    </span>
-                    {{/if}} {{#if (ne skill.system.attribut2 "none")}}
-                    <span class="item-field-label-short">
-                      <button
-                        class="rounded-input roll-competence"
-                        data-attr-key="{{skill.system.attribut2}}"
-                      >
-                        {{upper skill.system.attribut2}} :
-                        {{skill.system.attribut2total}}
-                      </button>
-                    </span>
-                    {{/if}} {{#if (ne skill.system.attribut3 "none")}}
-                    <span class="item-field-label-short">
-                      <button
-                        class="rounded-input roll-competence"
-                        data-attr-key="{{skill.system.attribut3}}"
-                      >
-                        {{upper skill.system.attribut3}} :
-                        {{skill.system.attribut3total}}
-                      </button>
-                    </span>
+                      <p class="comp-label">{{skill.name}}</p>
+                      <div class="input-comp">
+                        <select
+                          class="rounded-input edit-item-data"
+                          type="text"
+                          data-item-field="niveau"
+                          value="{{skill.system.niveau}}"
+                          data-dtype="Number"
+                        >
+                          {{#select skill.system.niveau}} {{>
+                          systems/fvtt-wasteland/templates/partial-list-niveau.html}}
+                          {{/select}}
+                        </select>
+                        {{#each comp.attributs as |attr key|}}
+                        <input
+                          type="number"
+                          value="data.attributs.{{attr}}.value"
+                          class="rounded-input adr-before"
+                        />
+                        {{/each}} {{#if (ne skill.system.attribut1 "none")}}
+                        <span class="item-field-label-short">
+                          <button
+                            class="rounded-input roll-competence"
+                            data-attr-key="{{skill.system.attribut1}}"
+                          >
+                            {{upper skill.system.attribut1}} :
+                            {{skill.system.attribut1total}}
+                          </button>
+                        </span>
+                        {{/if}} {{#if (ne skill.system.attribut2 "none")}}
+                        <span class="item-field-label-short">
+                          <button
+                            class="rounded-input roll-competence"
+                            data-attr-key="{{skill.system.attribut2}}"
+                          >
+                            {{upper skill.system.attribut2}} :
+                            {{skill.system.attribut2total}}
+                          </button>
+                        </span>
+                        {{/if}} {{#if (ne skill.system.attribut3 "none")}}
+                        <span class="item-field-label-short">
+                          <button
+                            class="rounded-input roll-competence"
+                            data-attr-key="{{skill.system.attribut3}}"
+                          >
+                            {{upper skill.system.attribut3}} :
+                            {{skill.system.attribut3total}}
+                          </button>
+                        </span>
 
-                    {{/if}}
-                    <div class="item-controls item-controls-fixed">
-                      <a class="item-control item-edit" title="Edit Item"
-                        ><i class="fas fa-edit"></i
-                      ></a>
-                      <a class="item-control item-delete" title="Delete Item"
-                        ><i class="fas fa-trash"></i
-                      ></a>
+                        {{/if}}
+                        <div class="item-controls item-controls-fixed">
+                          <a class="item-control item-edit" title="Edit Item"
+                            ><i class="fas fa-edit"></i
+                          ></a>
+                          <a
+                            class="item-control item-delete"
+                            title="Delete Item"
+                            ><i class="fas fa-trash"></i
+                          ></a>
+                        </div>
+                      </div>
                     </div>
+                    {{/each}}
                   </div>
                 </div>
-                {{/each}}
-              </div>
-            </div>
-            <div class="second-col">
-              <div class="separator">Savoirs</div>
-              <div class="competences">
-                {{#each savoirs as |savoir key|}}
-                <div
-                  class="comp-row item"
-                  data-item-id="{{savoir._id}}"
-                  data-item-type="competence"
-                >
-                  <p class="comp-label">{{savoir.name}}</p>
-                  <div class="input-comp">
-                    <select
-                      class="rounded-input edit-item-data"
-                      type="text"
-                      data-item-field="niveau"
-                      value="{{savoir.system.niveau}}"
-                      data-dtype="Number"
+                <div class="second-col">
+                  <div class="separator">Savoirs</div>
+                  <div class="competences">
+                    {{#each savoirs as |savoir key|}}
+                    <div
+                      class="comp-row item"
+                      data-item-id="{{savoir._id}}"
+                      data-item-type="competence"
                     >
-                      {{#select savoir.system.niveau}} {{>
-                      systems/fvtt-wasteland/templates/partial-list-niveau.html}}
-                      {{/select}}
-                    </select>
-                    {{#each comp.attributs as |attr key|}}
-                    <input
-                      type="number"
-                      value="data.attributs.{{attr}}.value"
-                      class="rounded-input adr-before"
-                    />
-                    {{/each}} {{#if (ne savoir.system.attribut1 "none")}}
-                    <span class="item-field-label-short">
-                      <button
-                        class="rounded-input roll-competence button-sheet-roll"
-                        data-attr-key="{{savoir.system.attribut1}}"
-                      >
-                        {{upper savoir.system.attribut1}} :
-                        {{savoir.system.attribut1total}}
-                      </button>
-                    </span>
-                    {{/if}} {{#if (ne savoir.system.attribut2 "none")}}
-                    <span class="item-field-label-short">
-                      <button
-                        class="rounded-input roll-competence button-sheet-roll"
-                        data-attr-key="{{savoir.system.attribut2}}"
-                      >
-                        {{upper savoir.system.attribut2}} :
-                        {{savoir.system.attribut2total}}
-                      </button>
-                    </span>
-                    {{/if}} {{#if (ne savoir.system.attribut3 "none")}}
-                    <span class="item-field-label-short">
-                      <button
-                        class="rounded-input roll-competence button-sheet-roll"
-                        data-attr-key="{{savoir.system.attribut3}}"
-                      >
-                        {{upper savoir.system.attribut3}} :
-                        {{savoir.system.attribut3total}}
-                      </button>
-                    </span>
+                      <p class="comp-label">{{savoir.name}}</p>
+                      <div class="input-comp">
+                        <select
+                          class="rounded-input edit-item-data"
+                          type="text"
+                          data-item-field="niveau"
+                          value="{{savoir.system.niveau}}"
+                          data-dtype="Number"
+                        >
+                          {{#select savoir.system.niveau}} {{>
+                          systems/fvtt-wasteland/templates/partial-list-niveau.html}}
+                          {{/select}}
+                        </select>
+                        {{#each comp.attributs as |attr key|}}
+                        <input
+                          type="number"
+                          value="data.attributs.{{attr}}.value"
+                          class="rounded-input adr-before"
+                        />
+                        {{/each}} {{#if (ne savoir.system.attribut1 "none")}}
+                        <span class="item-field-label-short">
+                          <button
+                            class="rounded-input roll-competence button-sheet-roll"
+                            data-attr-key="{{savoir.system.attribut1}}"
+                          >
+                            {{upper savoir.system.attribut1}} :
+                            {{savoir.system.attribut1total}}
+                          </button>
+                        </span>
+                        {{/if}} {{#if (ne savoir.system.attribut2 "none")}}
+                        <span class="item-field-label-short">
+                          <button
+                            class="rounded-input roll-competence button-sheet-roll"
+                            data-attr-key="{{savoir.system.attribut2}}"
+                          >
+                            {{upper savoir.system.attribut2}} :
+                            {{savoir.system.attribut2total}}
+                          </button>
+                        </span>
+                        {{/if}} {{#if (ne savoir.system.attribut3 "none")}}
+                        <span class="item-field-label-short">
+                          <button
+                            class="rounded-input roll-competence button-sheet-roll"
+                            data-attr-key="{{savoir.system.attribut3}}"
+                          >
+                            {{upper savoir.system.attribut3}} :
+                            {{savoir.system.attribut3total}}
+                          </button>
+                        </span>
 
-                    {{/if}}
-                  </div>
-                  <div class="item-controls item-controls-fixed">
-                    <a class="item-control item-edit" title="Edit Item"
-                      ><i class="fas fa-edit"></i
-                    ></a>
-                    <a class="item-control item-delete" title="Delete Item"
-                      ><i class="fas fa-trash"></i
-                    ></a>
+                        {{/if}}
+                      </div>
+                      <div class="item-controls item-controls-fixed">
+                        <a class="item-control item-edit" title="Edit Item"
+                          ><i class="fas fa-edit"></i
+                        ></a>
+                        <a class="item-control item-delete" title="Delete Item"
+                          ><i class="fas fa-trash"></i
+                        ></a>
+                      </div>
+                    </div>
+                    {{/each}}
                   </div>
                 </div>
-                {{/each}}
+              </div>
+              <div class="row-flex">
+                <div class="first-col">
+                  <div class="separator">Prédilections</div>
+                </div>
+                <div class="second-col">
+                  <div class="separator">Pouvoirs</div>
+                </div>
               </div>
             </div>
           </div>
           <div
-            class="third-row mt-20 tab combat"
+            class="row-flex mt-20 tab combat"
             data-group="primary"
             data-tab="combat"
           >
@@ -420,7 +500,7 @@
             </div>
           </div>
           <div
-            class="third-row mt-20 tab equipement"
+            class="row-flex mt-20 tab equipement"
             data-group="primary"
             data-tab="equipement"
           >
