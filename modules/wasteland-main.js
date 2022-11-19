@@ -22,7 +22,7 @@ import { WastelandItem } from "./wasteland-item.js";
 /************************************************************************************/
 Hooks.once("init", async function () {
   console.log(`Initializing Wasteland RPG`);
-
+  
   /* -------------------------------------------- */
   // preload handlebars templates
   WastelandUtility.preloadHandlebarsTemplates();

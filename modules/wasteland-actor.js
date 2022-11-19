@@ -111,11 +111,29 @@ export class WastelandActor extends Actor {
     return armes
   }
 
-  getHealthPercent(){
-    let newPercent = Math.round((this.system.sante.letaux / this.system.sante.base) * 100) 
+  getProgressPercent(data){
+    let newPercent;
+    // selon la progress bar choisie, calculer le pourcentage
+    switch (data) {
+      case "santeLetal":
+        // on divise la valeur actuelle par la valeur max et on multiplie par 100 pour avoir un pourcentage
+        // le math.round permet d'arrondir à l'entier le plus proche
+        newPercent = Math.round((this.system.sante.letaux / this.system.sante.base) * 100) 
+        break;
+      case "santeNonLetal":
+        newPercent = Math.round((this.system.sante.nonletaux / this.system.sante.base) * 100)
+        break;
+      case "psyche":
+        newPercent = Math.round((this.system.psyche.value / this.system.psyche.base) * 100)
+        break;
+      default:
+        break;
+    }
     if(newPercent > 100){
+      // ici on verifie que le pourcentage n'est pas supérieur à 100 et si c'est le cas on le met à 100
       newPercent = 100
     }else if(newPercent < 0){
+      // ici on verifie que le pourcentage n'est pas inférieur à 0 et si c'est le cas on le met à 0
       newPercent = 0
     };
     return newPercent;
@@ -261,9 +279,9 @@ export class WastelandActor extends Actor {
       if (this.system.sante.base != newSante) {
         this.update({ 'system.sante.base': newSante})
       }
-      let newAme = (this.system.attributs.cla.value + this.system.attributs.tre.value) * this.system.biodata.amemultiplier + 5
-      if (this.system.ame.fullmax != newAme) {
-        this.update({ 'system.ame.fullmax': newAme })
+      let newPsyche = (this.system.attributs.cla.value + this.system.attributs.tre.value) * 2 + 5
+      if (this.system.psyche.base != newPsyche) {
+        this.update({ 'system.psyche.base': newPsyche })
       }
     }
 
@@ -272,7 +290,6 @@ export class WastelandActor extends Actor {
 
   /* -------------------------------------------- */
   _preUpdate(changed, options, user) {
-
     super._preUpdate(changed, options, user);
   }
 

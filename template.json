@@ -70,13 +70,12 @@
           "base": 0,
           "bonus": 0,
           "nonletaux": 0,
-          "letaux": 0,
+          "letaux": 45,
           "sequelles": "",
           "percent": 0 
         },
-        "ame": {
-          "fullmax": 0,
-          "currentmax": 0,
+        "psyche": {
+          "base": 0,
           "value": 0,
           "traumatismes": ""
         },

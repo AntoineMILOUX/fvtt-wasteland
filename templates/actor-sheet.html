@@ -26,53 +26,85 @@
         <div class="row ml-20">
           <div class="bloc">
             <div class="separator">Santé létal</div>
-            <div class="health-bar">
-              <div
-                class="health-bar-fill"
-                style="width: {{percentHealth}}%"
-              ></div>
-              <div class="input-progress-bloc">
-                <input
-                  id="health"
-                  class="input-progress"
-                  type="number"
-                  value="{{data.sante.letaux }}"
-                  name="system.sante.letaux"
-                />
-                /
-                <input
-                  class="input-progress"
-                  type="number"
-                  value="{{data.sante.base }}"
-                  name="system.sante.base"
-                  disabled
-                />
+            <div class="health-bar-container">
+              <div class="health-bar">
+                <div
+                  class="health-bar-fill santeLetal"
+                  style="width: {{percentHealthLetal}}%"
+                ></div>
+                <div class="input-progress-bloc">
+                  <input
+                    id="health"
+                    class="input-progress"
+                    type="number"
+                    value="{{data.sante.letaux }}"
+                    name="system.sante.letaux"
+                  />
+                  /
+                  <input
+                    class="input-progress"
+                    type="number"
+                    value="{{data.sante.base }}"
+                    name="system.sante.base"
+                    disabled
+                  />
+                </div>
               </div>
             </div>
           </div>
           <div class="bloc">
             <div class="separator">Santé non létal</div>
-            <div class="health-bar">
-              <div
-                class="health-bar-fill"
-                style="width: {{percentHealth}}%"
-              ></div>
-              <div class="input-progress-bloc">
-                <input
-                  id="health"
-                  class="input-progress"
-                  type="number"
-                  value="{{data.sante.letaux }}"
-                  name="system.sante.letaux"
-                />
-                /
-                <input
-                  class="input-progress"
-                  type="number"
-                  value="{{data.sante.base }}"
-                  name="system.sante.base"
-                  disabled
-                />
+            <div class="health-bar-container">
+              <div class="health-bar">
+                <div
+                  class="health-bar-fill santeNonLetal"
+                  style="width: {{percentHealthNonLetal}}%"
+                ></div>
+                <div class="input-progress-bloc">
+                  <input
+                    id="health"
+                    class="input-progress"
+                    type="number"
+                    value="{{data.sante.nonletaux}}"
+                    name="system.sante.nonletaux"
+                  />
+                  /
+                  <input
+                    class="input-progress"
+                    type="number"
+                    value="{{data.sante.base }}"
+                    name="system.sante.base"
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bloc">
+            <div class="separator">Psyché</div>
+            <div class="health-bar-container">
+              <div class="health-bar">
+                <div
+                  class="health-bar-fill psyche"
+                  style="width: {{percentPsyche}}%; "
+                ></div>
+                <div class="input-progress-bloc">
+                  <input
+                    id="health"
+                    class="input-progress"
+                    type="number"
+                    value="{{data.psyche.value}}"
+                    name="system.psyche.value"
+                  />
+                  /
+                  <input
+                    class="input-progress"
+                    type="number"
+                    value="{{data.psyche.base }}"
+                    name="system.psyche.base"
+                    disabled
+                  />
+                </div>
               </div>
             </div>
           </div>
