@@ -1,46 +1,41 @@
-<div class="chat-message-header">
+<div class="chat-message-header wasteland-chat">
+ 
+  <div class="ownerSection">
+  <h4 class="bold">{{alias}}</h4>
   {{#if actorImg}}
   <img class="actor-icon" src="{{actorImg}}" alt="{{alias}}" />
   {{/if}}
-  <h4 class=chat-actor-name>{{alias}}</h4>
+</div>
 </div>
 
-<hr>
+{{#if competence}}
+<div class="separator">{{competence.name}}</div>
+{{/if}}
 
-{{#if actionImg}}
+<!-- {{#if actionImg}}
 <div>
   <img class="chat-icon" src="{{actionImg}}" alt="{{name}}" />
 </div>
-{{/if}}
+{{/if}} -->
 
 <div class="flexcol">
 </div>
 
-<div>
+<div class="wasteland-chat">
   <ul>
-    <li class="wasteland-roll">Attribut : {{attr.label}}</li>
+    <li class="wasteland-roll"><span class="bold underline"> Attribut </span> : {{attr.label}}</li>
 
-    {{#if competence}}
-    <li>Compétence : {{competence.name}}</li>
-    {{/if}}
-
-    {{#if rune}}
-    <li>Rune : {{rune.name}}</li>
-    <li>Mode : {{runemode}}</li>
-    <li>Points d'Ame : {{runeame}}</li>
-    <li>Durée : {{runeduree}} actions complexes</li>
-    {{/if}}
-
+ 
     {{#if bonusRoll}}
-    <li>{{textBonus}} : {{bonusRoll.total}}</li>
+    <li><span class="bold underline">{{textBonus}}</span> : {{bonusRoll.total}}</li>
     {{/if}}
 
     {{#if arme}}
-    <li>Arme : {{arme.name}} (+{{arme.system.bonusmaniementoff}})</li>
+    <li><span class="bold underline">Arme</span> : {{arme.name}} (+{{arme.system.bonusmaniementoff}})</li>
     {{/if}}
 
-    <li>Formule : {{diceFormula}}</li>
-    <li>Total : {{finalResult}}</li>
+    <li><span class="bold underline">Formule </span>: <span class="originalFont">{{diceFormula}}</span></li>
+    <li><span class="bold underline">Total</span> : {{finalResult}}</li>
 
     {{#if difficulte}}
     {{#if isSuccess}}

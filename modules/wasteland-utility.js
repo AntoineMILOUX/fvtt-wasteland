@@ -291,12 +291,12 @@ export class WastelandUtility {
 
   /* -------------------------------------------- */
   static async rollWasteland(rollData) {
-
     let actor = game.actors.get(rollData.actorId)
     if (rollData.attrKey == "tochoose") { // No attr selected, force address
       rollData.attrKey = "adr"
     }
     if (!rollData.attr) {
+      rollData.attr = actor.data.data.attributes[rollData.attrKey]
       rollData.actionImg = "systems/fvtt-wasteland/assets/icons/" + actor.system.attributs[rollData.attrKey].labelnorm + ".webp"
       rollData.attr = duplicate(actor.system.attributs[rollData.attrKey])
     }
@@ -329,6 +329,8 @@ export class WastelandUtility {
     console.log(">>>> ", myRoll)
 
     rollData.finalResult = myRoll.total
+    // remove all +0 rollData.diceFormula
+    rollData.diceFormula = rollData.diceFormula.replace(/\+0/g, "")
     this.computeResult(rollData)
 
 
@@ -336,7 +338,7 @@ export class WastelandUtility {
     this.createChatWithRollMode(rollData.alias, {
       content: await renderTemplate(`systems/fvtt-wasteland/templates/chat-generic-result.html`, rollData)
     }, rollData)
-
+    
   }
 
   /* -------------------------------------------- */
