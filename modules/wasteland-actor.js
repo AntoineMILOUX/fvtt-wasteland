@@ -100,7 +100,6 @@ export class WastelandActor extends Actor {
     let armes = []
     for (let arme of this.items) {
       if (arme.type == "arme") {
-      console.log('arme', arme)
 
         armes.push(this.prepareArme(arme))
       }
@@ -110,7 +109,19 @@ export class WastelandActor extends Actor {
     }
     return armes
   }
-
+  getPredilections(){
+    // for each this.system.skills get predilection and add to array
+    let predilections = []
+    for (let skill of this.getSkills()) {
+      if (skill.predilection) {
+        predilections.push(skill.predilection)
+      }
+    }
+    // remove duplicates predilections
+    predilections = predilections.filter((v, i, a) => a.findIndex(t => (t.name === v.name)) === i)
+    console.log("predilections", predilections)
+    return predilections
+  }
   getProgressPercent(data){
     let newPercent;
     // selon la progress bar choisie, calculer le pourcentage
@@ -161,11 +172,12 @@ export class WastelandActor extends Actor {
   getSkills() {
     let comp = []
     // boucle sur les compétences sauf Savoirs
-    console.log("this.items",this.items)
     for (let item of this.items) {
       item = duplicate(item)
+
       
       if (item.type == "competence") {
+        item.system.predilections = item.system.predilections;
         item.system.attribut1total = item.system.niveau + (this.system.attributs[item.system.attribut1]?.value || 0)
         item.system.attribut2total = item.system.niveau + (this.system.attributs[item.system.attribut2]?.value || 0)
         item.system.attribut3total = item.system.niveau + (this.system.attributs[item.system.attribut3]?.value || 0)
