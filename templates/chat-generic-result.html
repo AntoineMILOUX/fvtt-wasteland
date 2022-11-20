@@ -35,29 +35,37 @@
     {{/if}}
 
     <li><span class="bold underline">Formule </span>: <span class="originalFont">{{diceFormula}}</span></li>
-    <li><span class="bold underline">Total</span> : {{finalResult}}</li>
+    <li><span class="bold underline ">Total</span> : <span class="bold fs-12">{{finalResult}}</span></li>
+  </ul>
 
     {{#if difficulte}}
-    {{#if isSuccess}}
-    <li>Succés!!!</li>
-    {{else}}
-    <li>Echec ...</li>
-    {{/if}}
+      {{#if isSuccess}}
+        {{#if isHeroique}}
+         <div class="heroic-success dice-result-bool">Succés Héroïque !</div>
+        {{else}}
+          <div class="success dice-result-bool">
+            Succés !
+          </div>
+        {{/if}}
+      {{else}}
+        {{#if isDramatique}}
+          <div class="failure dice-result-bool">Echec Dramatique !</div>
+        {{else}}
+          <div class="failure dice-result-bool">
+            Echec ...
+          </div>
+        {{/if}}
+      {{/if}}
     {{/if}}
 
-    {{#if isHeroique}}
-    <li>Succés Héroïque!!!</li>
-    {{/if}}
-    {{#if isDramatique}}
-    <li>Echec Dramatique!!!</li>
-    {{/if}}
+    
+    
 
     {{#each predilections as |pred key|}}
     <li>
      <button class="chat-card-button predilection-reroll" data-predilection-index="{{key}}">Predilection : {{pred.name}}</button>
     </li>
     {{/each}}
-  </ul>
 </div>
 
 </div>

@@ -333,7 +333,26 @@
   box-shadow: 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%), 0 11px 15px -7px rgb(0 0 0 / 20%);
   
 }
+.success{
+  background: #315416;
+  
+}
+.heroic-success{
+  background: #1461ef;
+}
+.failure{
+  background: #7a0000;
+}
 
+.dice-result-bool{
+  color: white;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: solid 3px black;
+}
 .bold{
   font-weight: bold;
 }
@@ -632,12 +651,14 @@ input[type="number"] {
   color: #1e1e1e;
 }
 
-.p-2 {
-  padding: 20px;
+.fs-12{
+  font-size: 1.2em;
+}
+.p-5{
+  padding: 5px;
 }
 .mt-20{
   margin-top: 20px;
-
 }
 .pl-0 {
   padding-left: 0;
