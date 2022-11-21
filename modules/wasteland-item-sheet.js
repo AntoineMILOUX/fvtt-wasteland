@@ -166,6 +166,13 @@ export class WastelandItemSheet extends ItemSheet {
         'data.predilections': pred
       })
     })
+    html.find('.used-predilection').click(ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      this.actor.togglePredilectionUsed( li.parents("form").data("item-id").split('Item-')[1],  li.data("itemIndex") );
+      this.render(true);      
+    });
+
+
     html.find('#add-predilection').click(ev => {
       console.log("predilections add", this.object)
       let pred = []

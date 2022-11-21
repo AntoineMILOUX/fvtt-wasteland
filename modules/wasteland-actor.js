@@ -444,6 +444,12 @@ export class WastelandActor extends Actor {
     pred[predIdx].used = true
     await this.updateEmbeddedDocuments('Item', [{ _id: compId, 'system.predilections': pred }])
   }
+  async togglePredilectionUsed(compId, predIdx) {
+    let comp = this.items.get(compId)
+    let pred = duplicate(comp.system.predilections)
+    pred[predIdx].used = !pred[predIdx].used
+    await this.updateEmbeddedDocuments('Item', [{ _id: compId, 'system.predilections': pred }])
+  }
 
   /* -------------------------------------------- */
   getInitiativeScore( ) {
