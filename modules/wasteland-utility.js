@@ -104,12 +104,13 @@ export class WastelandUtility {
   static async chatListeners(html) {
 
     html.on("click", '.predilection-reroll', async event => {
+      debugger
       let predIdx = $(event.currentTarget).data("predilection-index")
       let messageId = WastelandUtility.findChatMessageId(event.currentTarget)
       let message = game.messages.get(messageId)
       let rollData = message.getFlag("world", "wasteland-roll")
       let actor = game.actors.get(rollData.actorId)
-      await actor.setPredilectionUsed(rollData.competence._id, predIdx)
+      await actor.setPredilectionUsed(rollData.competence._id, rollData.predilections,predIdx, actor);
       rollData.competence = duplicate(actor.getCompetence(rollData.competence._id))
       WastelandUtility.rollWasteland(rollData)
     })
@@ -309,8 +310,9 @@ export class WastelandUtility {
       }
     }
     //console.log("BEFORE COMP", rollData)
+    debugger 
     if (rollData.competence) {
-      rollData.predilections = duplicate(rollData.competence.system.predilections?.filter(pred => !pred.used) || [])
+      rollData.predilections = duplicate(rollData.competence.system.predilections.filter(pred => pred.used == false) || [])
       let compmod = (rollData.competence.system.niveau == 0) ? -3 : 0
       rollData.diceFormula += `+${rollData.attr.value}+${rollData.competence.system.niveau}+${rollData.modificateur}+${compmod}`
     } else {

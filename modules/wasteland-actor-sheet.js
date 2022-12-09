@@ -41,7 +41,7 @@ export class WastelandActorSheet extends ActorSheet {
       data: actorData.system,
       effects: this.object.effects.map(e => foundry.utils.deepClone(e.data)),
       limited: this.object.limited,
-      skills: this.actor.getSkills(),
+      skills: duplicate(this.actor.getSkills()),
       predilections:  this.actor.getPredilections(),
       savoirs : this.actor.getSavoirs(),
       armes: duplicate(this.actor.getWeapons()),

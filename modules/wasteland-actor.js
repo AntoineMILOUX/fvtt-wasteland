@@ -211,6 +211,8 @@ export class WastelandActor extends Actor {
       console.log("itemsSavoirs", item.type)
       if (item.type == "savoir") {
         console.log("savoir32", item)
+        item.system.predilections = item.system.predilections;
+
         item.system.attribut1total = item.system.niveau + (this.system.attributs[item.system.attribut1]?.value || 0)
         item.system.attribut2total = item.system.niveau + (this.system.attributs[item.system.attribut2]?.value || 0)
         item.system.attribut3total = item.system.niveau + (this.system.attributs[item.system.attribut3]?.value || 0)
@@ -434,13 +436,13 @@ export class WastelandActor extends Actor {
 
   /* -------------------------------------------- */
   getCompetence(compId) {
+    console.log('this', this)
     return this.items.get(compId)
   }
 
   /* -------------------------------------------- */
-  async setPredilectionUsed(compId, predIdx) {
-    let comp = this.items.get(compId)
-    let pred = duplicate(comp.system.predilections)
+  async setPredilectionUsed(compId, pred,predIdx, actor) {
+    debugger
     pred[predIdx].used = true
     await this.updateEmbeddedDocuments('Item', [{ _id: compId, 'system.predilections': pred }])
   }

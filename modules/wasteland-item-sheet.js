@@ -139,13 +139,13 @@ export class WastelandItemSheet extends ItemSheet {
     html.find('.delete-subitem').click(ev => {
       this.deleteSubitem(ev);
     })
-    html.find('.edit-prediction').change(ev => {
-      const li = $(ev.currentTarget).parents(".prediction-item")
-      let index = li.data("prediction-index")
+    html.find('.edit-predilection').change(ev => {
+      const li = $(ev.currentTarget).parents(".item")
+      let index = li[0].dataset.itemIndex;
       let pred = duplicate(this.object.system.predilections)
-      pred[index].name = ev.currentTarget.value
+      this.object.system.predilections[index].name = ev.currentTarget.value
       this.object.update({
-        'data.predilections': pred
+        'data.predilections': this.object.system.predilections
       })
     })
     html.find('.delete-prediction').click(ev => {
